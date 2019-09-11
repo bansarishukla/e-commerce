@@ -24,6 +24,7 @@ Route::group(['middleware' => ['auth','admin']], function () {
     });
     Route::resource('/product','ProductController');
     Route::resource('/category','CategoryController');
+    // Route::get('/display-product','ProductController@displayProduct');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

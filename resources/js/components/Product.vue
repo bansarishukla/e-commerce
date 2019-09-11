@@ -8,13 +8,13 @@
         <div class="form-group row">
           <label>Product Name</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" v-model="formData.name">
+            <input type="text" class="form-control" v-model="product.name">
           </div>
         </div>
         <div class="form-group row">
           <label>Image</label>
           <div class="col-md-2">
-            <img :src="formData.image" class="img-responsive">
+            <img :src="product.image" class="img-responsive">
           </div>
           <div class="col-md-8">
             <input type="file" ref="file" @change="onFileChange" class="form-control">
@@ -34,23 +34,27 @@
         <div class="form-group row">
           <label>Description</label>
           <div class="col-sm-8">
-            <textarea rows="4" class="form-control" v-model="formData.description"></textarea>
+            <textarea rows="4" class="form-control" v-model="product.description"></textarea>
           </div>
         </div>
         <div class="form-group row">
           <label>Full-Description</label>
           <div class="col-sm-8">
-            <textarea rows="8" class="form-control" v-model="formData.full_description"></textarea>
+            <textarea rows="8" class="form-control" v-model="product.full_description"></textarea>
           </div>
         </div>
         <div class="form-group row">
           <label>Price</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" v-model="formData.price">
+            <input type="text" class="form-control" v-model="product.price">
           </div>
         </div>
+        <div class="form-group row">
+          <label>quantity</label>
+          <input type="number" class="form-control" v-model="product.quantity">
+        </div>
         <div style="text-align: center">
-          <button data-inline="true" type="submit" class="btn btn-primary" >Add category</button>
+          <button data-inline="true" type="submit" class="btn btn-primary">Add category</button>
         </div>
       </form>
     </div>
@@ -69,13 +73,13 @@ export default {
       list: [],
       selectedCategories: [],
       categoryList: [],
-      formData: {
+      product: {
         name: '',
         image: '',
         description: '',
         full_description: '',
         price: '',
-        // action: ''
+        quantity: ''
       },
     };
   },
@@ -89,62 +93,62 @@ export default {
   },
   methods: {
     onFileChange(e) {
-      this.formData.image = this.$refs.file.files[0];
+      this.product.image = this.$refs.file.files[0];
     },
     createImage(file) {
       let reader = new FileReader();
       let vm = this;
       reader.onload = (e) => {
-          vm.formData.image = e.target.result;
+          vm.product.image = e.target.result;
       };
       reader.readAsDataURL(file);
     },
     async createProduct()
     {
       let data = {
-        name: this.formData.name,
-        image: this.formData.image,
+        name: this.product.name,
+        image: this.product.image,
         categories: this.selectedCategories,
-        description: this.formData.description,
-        full_description: this.formData.full_description,
-        price: this.formData.price,
-        // action: this.formData.action
+        description: this.product.description,
+        full_description: this.product.full_description,
+        price: this.product.price,
+        quantity: this.product.quantity
       }
       console.log(data);
-      let formData = new FormData();
-      formData.append('name', data.name);
-      formData.append('image', data.image);
-      formData.append('categories', JSON.stringify(data.categories));
-      formData.append('description', data.description);
-      formData.append('full_description', data.full_description);
-      formData.append('price', data.price);
+      let product = new FormData();
+      product.append('name', data.name);
+      product.append('image', data.image);
+      product.append('categories', JSON.stringify(data.categories));
+      product.append('description', data.description);
+      product.append('full_description', data.full_description);
+      product.append('price', data.price);
+      product.append('quantity', data.quantity);
 
-
-      axios.post('/product', formData, {
-               headers: {
-                   'Content-Type': 'multipart/form-data'
-               }
-             })
-        .then((res) => {
-          this.formData.name = '';
-          this.formData.image = '';
-          this.formData.categoryList = '';
-          this.formData.description = '';
-          this.formData.full_description = '';
-          this.formData.price = '';
-          // this.formData.action = '';
-          this.list.push(res.data.formData)
-        })
-        .catch((err) => console.error(err));
-      },
-      async fetchCategory()
-      {
-        let res = await axios.get('/category')
-        if(res.data)
-        {
-          this.categoryList = res.data.categories
+      axios.post('/product', product, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
         }
-      },
+      })
+      .then((res) => {
+        this.product.name = '';
+        this.product.image = '';
+        this.product.categoryList = '';
+        this.product.description = '';
+        this.product.full_description = '';
+        this.product.price = '';
+        this.product.quantity = '';
+        this.list.push(res.data.product)
+      })
+      .catch((err) => console.error(err));
+    },
+    async fetchCategory()
+    {
+      let res = await axios.get('/category')
+      if(res.data)
+      {
+        this.categoryList = res.data.categories
+      }
+    },
   }
 };
 </script>
