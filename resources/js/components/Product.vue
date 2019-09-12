@@ -13,9 +13,6 @@
         </div>
         <div class="form-group row">
           <label>Image</label>
-          <div class="col-md-2">
-            <img :src="product.image" class="img-responsive">
-          </div>
           <div class="col-md-8">
             <input type="file" ref="file" @change="onFileChange" class="form-control">
           </div>

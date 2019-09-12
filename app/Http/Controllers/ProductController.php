@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
 {
@@ -36,13 +37,13 @@ class ProductController extends Controller
    */
   public function store(Request $request)
   {
-    $this->validate($request, [
-      'name'=>'required',
-      'image'=>'required',
-      'description'=>'required',
-      'full_description'=>'required',
-      'price'=>'required'
-    ]);
+    // $this->validate($request, [
+    //   'name'=>'required',
+    //   'image'=>'required',
+    //   'description'=>'required',
+    //   'full_description'=>'required',
+    //   'price'=>'required'
+    // ]);
 
     $product= new Product;
 
@@ -50,7 +51,6 @@ class ProductController extends Controller
     $request->image->move(public_path('/uploads/'), $imageName);
     $imagePath = '/uploads/'. $imageName;
     $product->image = $imagePath;
-    $product->image = $request->image;
 
     $product->name = $request->name;
     $product->description = $request->description;
@@ -101,12 +101,18 @@ class ProductController extends Controller
    */
   public function update(Request $request, $id)
   {
-    $productData = Product::findOrFail($id);
-    if($request->hasFile('image')){
+     $productData = Product::findOrFail($id);
+
+    if($request->hasFile('image')) {
+      $imagePath = public_path('/uploads/{$productData->image}');
+      if(file_exists($imagePath)) {
+        unlink($imagePath);
+      }
       $imageName = time() . '.' . $request->image->getClientOriginalExtension();
       $request->image->move(public_path('/uploads/'), $imageName);
       $imagePath = '/uploads/'. $imageName;
       $productData->image = $imagePath;
+      $productData->save();
     }
 
     $productData->name = $request->name;
@@ -115,7 +121,7 @@ class ProductController extends Controller
     $productData->price = $request->price;
     $productData->quantity = $request->quantity;
     $productData->save();
-    $productData->categories()->sync($request->categories);
+    $productData->categories()->sync(json_decode($request->categories));
     return response()->json([
       'product' => $productData
     ]);
@@ -139,5 +145,10 @@ class ProductController extends Controller
   {
     $products = Product::all();
     return view('admin.display_product', compact(['products']));
+  }
+  public function getProduct(Request $request)
+  {
+    $products = Product::all();
+    return view('home', compact('products'));
   }
 }

@@ -67,6 +67,13 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
+                    <div class="menu">
+                        <a href="#" class="item active" >Home</a>
+                        <a href="#" class="item">Gallery</a>
+                        <a href="#" class="item">Settings</a>
+                        <a href="#" class="item">About</a>
+                        <a href="#" class="item">Contact</a>
+                      </div>
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else

@@ -4,12 +4,12 @@
       Edit Product
     </div>
     <div class="card-body">
-      <form @submit.prevent="updatePost">
+      <form @submit.prevent="updateProduct">
         <div class="form-group">
           <label for="">Name</label>
           <input v-model="formData.name" type="text" class="form-control">
         </div>
-         <div class="form-group">
+        <div class="form-group">
           <label for="">Image</label>
           <img :src="formData.image" height="50px" width="50px" alt="image"/>
           <input type="file" ref="file" @change="onFileChange" class="form-control">
@@ -105,7 +105,7 @@ export default {
     {
       let res = await axios.get('/product/' + this.$route.params.id + '/edit')
     },
-    async updatePost(e)
+    async updateProduct(e)
     {
       let data = {
         name : this.formData.name,
@@ -126,7 +126,7 @@ export default {
       product.append('price', data.price);
       product.append('quantity', data.quantity);
 
-      let res = await axios.put('/product/' + this.editData.id , product, {
+      let res = await axios.post('/product/' + this.editData.id , product, {
         headers: {
             'Content-Type': 'multipart/form-data'
         }

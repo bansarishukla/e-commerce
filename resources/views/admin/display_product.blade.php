@@ -5,5 +5,3 @@
     <display-product :post-data="{{ json_encode($product) }}"></display-product>
   </div>
 @endsection
-
-
