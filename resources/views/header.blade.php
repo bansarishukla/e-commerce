@@ -1,38 +1,12 @@
-<template>
-   <div class="container-fluid">
-      <div class="header">
-        <div class="logo">
-          <p class="main-title">overtake</p>
-          <p class="sub-title">morning</p>
-        </div>
-        <div class="collapse-menu">
-          <div class="collapse-menu-icon-container">
-             <a href="javascript:void(0)"  onclick="myFunction()"> <i class="fa fa-bars" aria-hidden="true"></i></a>
-          </div>
-        </div>
-        <div class="menu">
-            <a href="#" class="item active" >Home</a>
-            <a href="#" class="item">Gallery</a>
-            <a href="#" class="item">Settings</a>
-            <a href="#" class="item">About</a>
-            <a href="#" class="item">Contact</a>
-          </div>
-      </div>
-      <div class="mobile-menu" id="myLinks">
-          <a href="#" class=" active" >Home</a>
-          <a href="#" class="">Gallery</a>
-          <a href="#" class="">Settings</a>
-          <a href="#" class="">About</a>
-          <a href="#" class="">Contact</a>
-      </div>
-    </div>
-</template>
-<style>
-*{
-  margin: 0px;
-  padding:0px;
-}
-body {
+<html>
+  <head>
+    <title>Welcome</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+      body {
   width: 100%;
   height: 100%;
 }
@@ -207,4 +181,28 @@ body {
   }
 }
 
-</style>
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+        <div class="header">
+          <div class="logo">
+            <p class="main-title">overtake</p>
+            <p class="sub-title">morning</p>
+          </div>
+          <div class="collapse-menu">
+            <div class="collapse-menu-icon-container">
+                <a href="javascript:void(0)"  onclick="myFunction()"> <i class="fa fa-bars" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          <div class="menu">
+              <a href="#" class="item active" >Home</a>
+              <a href="#" class="item">Gallery</a>
+              <a href="#" class="item">Settings</a>
+              <a href="#" class="item">About</a>
+              <a href="#" class="item">Contact</a>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

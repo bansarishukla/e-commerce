@@ -5,49 +5,59 @@
     </div>
     <div class="card-body">
       <form @submit.prevent="updateProduct">
-        <div class="form-group">
-          <label for="">Name</label>
-          <input v-model="formData.name" type="text" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="">Image</label>
-          <img :src="formData.image" height="50px" width="50px" alt="image"/>
-          <input type="file" ref="file" @change="onFileChange" class="form-control">
+        <div class="form-group row">
+          <label for="inputName" class="col-sm-1 col-form-label">Name</label>
+          <div class="col-sm-8">
+            <input v-model="formData.name" type="text" class="form-control">
+          </div>
         </div>
         <div class="form-group row">
-          <label>Description</label>
+          <label for="inputImage" class="col-sm-1 col-form-label">Selected Image</label>
+          <div class="col-sm-8">
+            <img :src="formData.image" height="50px" width="50px" alt="image"/>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputImage1" class="col-sm-1 col-form-label">Choose Image</label>
+          <div class="col-sm-8">
+            <input type="file" ref="file" @change="onFileChange" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputDescription" class="col-sm-1 col-form-label">Description</label>
           <div class="col-sm-8">
             <textarea rows="4" class="form-control" v-model="formData.description"></textarea>
           </div>
         </div>
         <div class="form-group row">
-          <label>Full-Description</label>
+          <label for="inputFullDescription" class="col-sm-1 col-form-label">Full-Description</label>
           <div class="col-sm-8">
             <textarea rows="8" class="form-control" v-model="formData.full_description"></textarea>
           </div>
         </div>
         <div class="form-group row">
-          <label>Price</label>
+          <label for="inputPrice" class="col-sm-1 col-form-label">Price</label>
           <div class="col-sm-8">
             <input type="text" class="form-control" v-model="formData.price">
           </div>
         </div>
         <div class="form-group row">
-          <label>quantity</label>
+          <label for="inputQuantity" class="col-sm-1 col-form-label">quantity</label>
           <div class="col-sm-8">
             <input type="text" class="form-control" v-model="formData.quantity">
           </div>
         </div>
-        <div class="form-group">
-          <label>Selected Categories</label>
+        <div class="form-group row">
+          <label for="inputSelectedCat" class="col-sm-2 col-form-label">Selected Categories</label>
           <div
               v-for="(category,index) in formData.categories"
               :key="index"
+              class="col-sm-1"
           >{{ category.name }}
           </div>
       </div>
-        <div class="form-group">
-          <label>Select Category</label>
+        <div class="form-group row">
+          <label for="inputSelectCat" class="col-sm-1 col-form-label">Select Category</label>
           {{ selectedCategories }}
           <select v-model="selectedCategories" multiple>
             <option v-for="(category,index) in categoryList"
@@ -57,7 +67,7 @@
             </option>
           </select>
       </div>
-        <button type="submit" class="btn btn-info">Update</button>
+        <button type="submit" class="btn btn-primary">Update</button>
       </form>
     </div>
   </div>

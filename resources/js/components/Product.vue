@@ -6,19 +6,19 @@
     <div class="content">
       <form @submit.prevent="createProduct()">
         <div class="form-group row">
-          <label>Product Name</label>
+          <label for="inputName" class="col-sm-2 col-form-label title">Product Name</label>
           <div class="col-sm-8">
             <input type="text" class="form-control" v-model="product.name">
           </div>
         </div>
         <div class="form-group row">
-          <label>Image</label>
-          <div class="col-md-8">
+          <label for="inputImage" class="col-sm-2 col-form-label title">Image</label>
+          <div class="col-sm-8">
             <input type="file" ref="file" @change="onFileChange" class="form-control">
           </div>
         </div>
         <div class="form-group row">
-          <label>Category</label>
+          <label for="inputCategory" class="col-sm-2 col-form-label title">Category</label>
           {{ selectedCategories }}
           <select v-model="selectedCategories" multiple>
             <option v-for="(category,index) in categoryList"
@@ -29,26 +29,28 @@
           </select>
         </div>
         <div class="form-group row">
-          <label>Description</label>
+          <label for="inputDescription" class="col-sm-2 col-form-label title">Description</label>
           <div class="col-sm-8">
             <textarea rows="4" class="form-control" v-model="product.description"></textarea>
           </div>
         </div>
         <div class="form-group row">
-          <label>Full-Description</label>
+          <label for="inputFullDescription" class="col-sm-2 col-form-label title">Full-Description</label>
           <div class="col-sm-8">
             <textarea rows="8" class="form-control" v-model="product.full_description"></textarea>
           </div>
         </div>
         <div class="form-group row">
-          <label>Price</label>
+          <label for="inputPrice" class="col-sm-2 col-form-label title">Price</label>
           <div class="col-sm-8">
             <input type="text" class="form-control" v-model="product.price">
           </div>
         </div>
         <div class="form-group row">
-          <label>quantity</label>
-          <input type="number" class="form-control" v-model="product.quantity">
+          <label for="inputQuantity" class="col-sm-2 col-form-label title">quantity</label>
+          <div class="col-sm-8">
+            <input type="number" class="form-control" v-model="product.quantity">
+          </div>
         </div>
         <div style="text-align: center">
           <button data-inline="true" type="submit" class="btn btn-primary">Add category</button>
@@ -155,5 +157,9 @@ export default {
   }
   .main {
     display: row;
+  }
+  .title {
+    font-size: 20px;
+    font-weight: bold;
   }
 </style>

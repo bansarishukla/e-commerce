@@ -149,6 +149,6 @@ class ProductController extends Controller
   public function getProduct(Request $request)
   {
     $products = Product::all();
-    return view('home', compact('products'));
+    return view('welcome', compact('products'));
   }
 }

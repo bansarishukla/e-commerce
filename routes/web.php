@@ -28,4 +28,4 @@ Route::group(['middleware' => ['auth','admin']], function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/display','ProductController@getProduct');
+Route::get('/','ProductController@getProduct');
