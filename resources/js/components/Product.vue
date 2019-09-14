@@ -5,7 +5,7 @@
     </div> -->
     <div class="content">
       <form @submit.prevent="createProduct()">
-        <div class="form-group row">
+        <!-- <div class="form-group row">
           <label for="inputName" class="col-sm-2 col-form-label title">Product Name</label>
           <div class="col-sm-8">
             <input type="text" class="form-control" v-model="product.name">
@@ -54,7 +54,47 @@
         </div>
         <div style="text-align: center">
           <button data-inline="true" type="submit" class="btn btn-primary">Add category</button>
+        </div> -->
+        <div class="form-group">
+          <label for="inputName">Product Name</label>
+          <input type="text" class="form-control" id="inputName" v-model="product.name" placeholder="Product Name">
         </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputPrice">Price</label>
+            <input type="text" class="form-control" id="inputPrice" v-model="product.price" placeholder="Price">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputQuantity">Quantity</label>
+            <input type="text" class="form-control" id="inputQuantity" v-model="product.quantity" placeholder="Quantity">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputImage" class="col-sm-2 col-form-label title">Image</label>
+          <div class="col-sm-8">
+            <input type="file" ref="file" @change="onFileChange" class="form-control">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword4">Description</label>
+          <textarea rows="4" class="form-control" v-model="product.description"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="inputFullDescription">Full Description</label>
+          <textarea rows="5" class="form-control" v-model="product.full_description"></textarea>
+        </div>
+        <div class="form-group">
+         <label for="inputFullDescription">Category</label>
+          {{ selectedCategories }}
+          <select v-model="selectedCategories" multiple>
+            <option v-for="(category,index) in categoryList"
+                :key="index"
+                :value="category.id">
+                {{ category.name }}
+              </option>
+          </select>
+        </div>
+        <button data-inline="true" type="submit" class="btn btn-primary">Add category</button>
       </form>
     </div>
   </div>

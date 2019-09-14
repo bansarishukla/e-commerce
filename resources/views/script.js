@@ -1,10 +1,19 @@
-$('#carouselExample').on('slide.bs.carousel', function (e) {
+(function(){
+  $('.carousel-showmanymoveone .item').each(function(){
+    var itemToClone = $(this);
 
-    var $e = $(e.relatedTarget);
-    var idx = $e.index();
-    var itemsPerSlide = 4;
-    var totalItems = $('.carousel-item').length;
+    for (var i=1;i<6;i++) {
+      itemToClone = itemToClone.next();
 
-    if (idx >= totalItems-(itemsPerSlide-1)) {
-        var it = itemsPerSlide - (totalItems - idx);
-        for (var i=0; i
+      // wrap around if at end of item collection
+      if (!itemToClone.length) {
+        itemToClone = $(this).siblings(':first');
+      }
+
+      // grab item, clone, add marker class, add to collection
+      itemToClone.children(':first-child').clone()
+        .addClass("cloneditem-"+(i))
+        .appendTo($(this));
+    }
+  });
+}());

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -149,6 +150,11 @@ class ProductController extends Controller
   public function getProduct(Request $request)
   {
     $products = Product::all();
-    return view('welcome', compact('products'));
+    $categories = Category::all();
+    return view('welcome', compact('products','categories'));
+  }
+  public function viewMore($id) {
+    $products = Product::findOrFail($id);
+    return view('viewmore_product', compact('products'));
   }
 }
