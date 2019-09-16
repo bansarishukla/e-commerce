@@ -30,4 +30,5 @@ Route::group(['middleware' => ['auth','admin']], function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/','ProductController@getProduct');
 Route::get('/viewmore/{id}/', 'ProductController@viewMore');
+Route::resource('/order', 'LoginController@redirectTo');
 
