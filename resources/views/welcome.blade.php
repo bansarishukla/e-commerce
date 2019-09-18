@@ -63,8 +63,10 @@
         padding: 0 50px 0 50px;
         margin: 0 50px 0 50px;
       }
-      .card {
+      .content.card {
         margin: 0 50px 0 50px;
+        width: 250px;
+        height: 50px;
       }
       .header {
         height: 50px;
@@ -101,6 +103,7 @@
         font-size: 16px;
         padding: 16px 32px;
       }
+
     </style>
   </head>
   <body>
@@ -132,7 +135,7 @@
     <div id="app" class="main">
       {{-- <img src="{{URL::asset('/images/women-shopping.jpg')}}" alt="profile Pic" height="500px" width="100%"> --}}
 
-        <div id="carousel-example-multi" class="carousel slide carousel-multi-item" data-ride="carousel">
+        {{-- <div id="carousel-example-multi" class="carousel slide carousel-multi-item" data-ride="carousel">
         <div class="controls-top">
           <a class="btn-floating" href="#carousel-example-multi" data-slide="prev"><i
               class="fas fa-chevron-left"></i></a>
@@ -238,23 +241,40 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --}}
 
         <div class="content">
-          <div class="post">
-            <div class="row">
+
+            {{-- <div class="row">
               @foreach($products as $product)
-              <div class="col">
+              <div class="col-sm-3">
                 <div class="card">
-                  <img src="{{ URL::asset($product->image) }}"  class="image" height="300px" width="300px">
+                  <img src="{{ URL::asset($product->image) }}"  class="image">
                   <div class="middle">
                     <a href="{{action('ProductController@viewMore', $product->id )}}" class="btn btn-primary">View more</a>
                   </div>
                 </div>
               </div>
               @endforeach
-            </div>
-          </div>
+            </div> --}}
+
+            <div class="row">
+                @foreach($products as $product)
+                <div class="col-md-4">
+                  <div class="card mb-2">
+
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
+                      alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title">Card title</h4>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                      <a class="btn btn-primary">Button</a>
+                    </div>
+
+                  </div>
+                </div>
+                @endforeach
         </div>
       </div>
     </div>

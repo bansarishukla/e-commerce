@@ -35,7 +35,7 @@ class LoginController extends Controller
         }
         else
         {
-            return 'order';
+            return '/';
         }
     }
 

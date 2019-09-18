@@ -39,7 +39,8 @@ export default {
       list: [],
       category: {
         name: ''
-      }
+      },
+      dialog:false
     };
   },
   mounted() {
@@ -70,7 +71,7 @@ export default {
           this.list.splice(index,1)
         })
         .catch((err) => console.error(err));
-    }
+    },
   }
 };
 </script>

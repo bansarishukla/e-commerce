@@ -8,25 +8,25 @@ class Order extends Model
 {
   protected $fillable = [
     'user_id',
-    'billing_email',
-    'billing_name',
-    'billing_address',
-    'billing_city',
-    'billing_postalcode',
-    'billing_phone',
-    'billing_name_on_card',
-    'billing_subtotal',
-    'billing_total',
-    'payment_gateway',
-    'shipped',
-    'error'
+    'name',
+    'mobile',
+    'pincode',
+    'locality',
+    'address',
+    'city',
+    'state',
+    'landmark',
+    'alternate_mobile',
+    'address_type',
+    'name_on_card',
+    'card_number'
   ];
   public function users()
   {
     return $this->belongs('App\User');
   }
-  // public function products()
-  // {
-  //   return $this->belongsToMany('App\Product')->withPivot('quantity');
-  // }
+  public function products()
+  {
+    return $this->belongsToMany('App\Product');
+  }
 }

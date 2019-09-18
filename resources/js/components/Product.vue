@@ -5,56 +5,6 @@
     </div> -->
     <div class="content">
       <form @submit.prevent="createProduct()">
-        <!-- <div class="form-group row">
-          <label for="inputName" class="col-sm-2 col-form-label title">Product Name</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" v-model="product.name">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputImage" class="col-sm-2 col-form-label title">Image</label>
-          <div class="col-sm-8">
-            <input type="file" ref="file" @change="onFileChange" class="form-control">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputCategory" class="col-sm-2 col-form-label title">Category</label>
-          {{ selectedCategories }}
-          <select v-model="selectedCategories" multiple>
-            <option v-for="(category,index) in categoryList"
-                :key="index"
-                :value="category.id">
-                {{ category.name }}
-              </option>
-          </select>
-        </div>
-        <div class="form-group row">
-          <label for="inputDescription" class="col-sm-2 col-form-label title">Description</label>
-          <div class="col-sm-8">
-            <textarea rows="4" class="form-control" v-model="product.description"></textarea>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputFullDescription" class="col-sm-2 col-form-label title">Full-Description</label>
-          <div class="col-sm-8">
-            <textarea rows="8" class="form-control" v-model="product.full_description"></textarea>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputPrice" class="col-sm-2 col-form-label title">Price</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" v-model="product.price">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputQuantity" class="col-sm-2 col-form-label title">quantity</label>
-          <div class="col-sm-8">
-            <input type="number" class="form-control" v-model="product.quantity">
-          </div>
-        </div>
-        <div style="text-align: center">
-          <button data-inline="true" type="submit" class="btn btn-primary">Add category</button>
-        </div> -->
         <div class="form-group">
           <label for="inputName">Product Name</label>
           <input type="text" class="form-control" id="inputName" v-model="product.name" placeholder="Product Name">
@@ -72,7 +22,7 @@
         <div class="form-group row">
           <label for="inputImage" class="col-sm-2 col-form-label title">Image</label>
           <div class="col-sm-8">
-            <input type="file" ref="file" @change="onFileChange" class="form-control">
+            <input type="file" ref="file" @change="onFileChange" class="form-control img">
           </div>
         </div>
         <div class="form-group">
@@ -201,5 +151,9 @@ export default {
   .title {
     font-size: 20px;
     font-weight: bold;
+  }
+  .img {
+    width: 250px;
+    height: 250px;
   }
 </style>

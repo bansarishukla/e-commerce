@@ -95,6 +95,7 @@ class CategoryController extends Controller
   {
     $category = Category::findOrFail($id);
     $category->delete();
+    // return ['message' => 'UserDeleted'];
     return response()->json([
       'status' => 'Deleted'
     ]);

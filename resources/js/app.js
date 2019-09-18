@@ -24,7 +24,7 @@ Vue.component('product-component', require('./components/Product.vue').default);
 Vue.component('category-component', require('./components/Category.vue').default);
 Vue.component('display-product', require('./components/DisplayProducts.vue').default);
 Vue.component('edit-product', require('./components/EditProduct.vue').default);
-Vue.component('order-product', require('./components/Order.vue').default);
+Vue.component('order-component', require('./components/Order.vue').default);
 Vue.component('modal-component',require('./components/ModalLogin.vue').default);
 
 /**

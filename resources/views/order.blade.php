@@ -1,11 +1,17 @@
 @extends('layouts.app')
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 @section('content')
-  <div class="content">
-    <order-product></order-product>
-  </div>
-  <script src="{{ asset('js/app.js') }}"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <body>
+    <div class="container-fliud">
+      <div class="main">
+        <div class="content">
+          {{-- <order-component /> --}}
+          <order-component :post-data="{{ json_encode($orders) }}"></order-component>
+        </div>
+        {{-- {{ $products->name }} --}}
+      </div>
+    </div>
+  </body>
 @endsection
-
-
-

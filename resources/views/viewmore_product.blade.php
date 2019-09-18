@@ -35,59 +35,24 @@
     </style>
   </head>
   <body>
-    <div class="row">
-      @include('../views/layouts/header.blade.php');
-      <div class="col-md-3">
-        <img src="{{ URL::asset($products->image) }}" class="image">
-        <a class="btn buy_now"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Buy Now</a>
-        {{-- <a href="#cancel-modal" class="text-blue-500 underline">Open Modal</a>
-        <modal-component name="cancel-modal">
-            <h1 class="font-bold text-xl mb-2">Leaving So Soon?</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore.
-            </p>
-            <template v-slot:footer>
-              <a
-                href="#"
-                class="bg-gray-500 py-2 px-4 rounded-lg text-white hover:bg-gray-600 mr-2"
-              >
-                Cancel
-              </a>
-              <a
-                href="#confirm-cancel-modal"
-                class="bg-blue-500 py-2 px-4 rounded-lg text-white hover:bg-blue-600"
-              >
-                Confirm Cancellation
-              </a>
-            </template>
-          </modal-component> --}}
-          {{-- <modal name="confirm-cancel-modal">
-            <h1 class="font-bold text-xl mb-2">Are you sure?</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore.
-            </p>
-            <template v-slot:footer>
-              <a
-                href="#"
-                class="bg-gray-500 py-2 px-4 rounded-lg text-white hover:bg-gray-600 mr-2"
-              >
-                Cancel
-              </a>
-              <a
-                href="#"
-                class="bg-blue-500 py-2 px-4 rounded-lg text-white hover:bg-blue-600"
-              >
-                Yes
-              </a>
-            </template>
-          </modal> --}}
+    <div class="app">
+      <div class="row">
+        @include('/header');
+        <div class="col-md-3">
+          <img src="{{ URL::asset($products->image) }}" class="image">
+          <a href="/order">Buy Now</a>
+          {{-- <a href="{{action('OrderController@create')}}" class="btn buy_now"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Buy Now</a> --}}
+        </div>
+        <div class="content col-md-9">
+          <h2>{{ $products->name }}</h2>
+          <h5>{{ $products->price }} rs</h5>
+        </div>
+      </div>
     </div>
-    <div class="content col-md-9">
-      <h2>{{ $products->name }}</h2>
-      <h5>{{ $products->price }} rs</h5>
-    </div>
+    <script src="{{ asset('js/app.js') }}"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
 
