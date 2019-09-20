@@ -11,7 +11,6 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-    <!-- Styles -->
     <style>
       html, body {
         background-color: #fff;
@@ -103,183 +102,135 @@
         font-size: 16px;
         padding: 16px 32px;
       }
-
+      .buy_now {
+        border: 1px solid black;
+        color: black;
+      }
+      .buy_now:hover {
+        background-color: black;
+        color: white;
+        font-weight: bold;
+      }
+      .carousel {
+        margin-bottom: 50px;
+      }
+      .content {
+        display: flex;
+      }
+      .category {
+        width: 350px;
+        list-style: none;
+      }
     </style>
   </head>
   <body>
     <div>
       @if (Route::has('login'))
       <div class="header">
-      <div class="top-right links">
-        <a href="#"><i class="fa fa-paint-brush" aria-hidden="true"></i>By Styles</a>
-        <a href="#"><i class="fa fa-briefcase" aria-hidden="true"></i>By Features</a>
-        <a href="#"><i class="fa fa-paperclip" aria-hidden="true"></i>
-          <select name="dropdown">
-            @foreach($categories as $category)
-            <option value="{{ $category->name }}">{{ $category->name }}</option>
-            @endforeach
-          </select>
-        </a>
-        @auth
-          <a href="{{ url('/home') }}">Home</a>
-        @else
-          <a href="{{ route('login') }}">Login</a>
+        <img src="{{URL::asset('/images/cart1.png')}}" height="40px" width="40px" class="ml-5 mt-1">
+        <div class="top-right links">
+          <a href="#">Home</a>
+          <a href="#">Contact</a>
+          @auth
+            <a href="{{ url('/home') }}">Home</a>
+          @else
+            <a href="{{ route('login') }}">Login</a>
 
-          @if (Route::has('register'))
-            <a href="{{ route('register') }}">Register</a>
-          @endif
-        @endauth
-      </div>
-    @endif
-  </div>
-    <div id="app" class="main">
-      {{-- <img src="{{URL::asset('/images/women-shopping.jpg')}}" alt="profile Pic" height="500px" width="100%"> --}}
-
-        {{-- <div id="carousel-example-multi" class="carousel slide carousel-multi-item" data-ride="carousel">
-        <div class="controls-top">
-          <a class="btn-floating" href="#carousel-example-multi" data-slide="prev"><i
-              class="fas fa-chevron-left"></i></a>
-          <a class="btn-floating" href="#carousel-example-multi" data-slide="next"><i
-              class="fas fa-chevron-right"></i></a>
+            @if (Route::has('register'))
+              <a href="{{ route('register') }}">Register</a>
+            @endif
+          @endauth
         </div>
-        <!--/.Controls-->
-
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#carousel-example-multi" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-example-multi" data-slide-to="1"></li>
-          <li data-target="#carousel-example-multi" data-slide-to="2"></li>
-          <li data-target="#carousel-example-multi" data-slide-to="3"></li>
-          <li data-target="#carousel-example-multi" data-slide-to="4"></li>
-          <li data-target="#carousel-example-multi" data-slide-to="5"></li>
-        </ol>
-        <!--/.Indicators-->
-
-        <div class="carousel-inner v-2" role="listbox">
-
+      @endif
+      </div>
+    </div>
+    <div class="container-fuid">
+      <div id="bs4-multi-slide-carousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+        <div class="carousel-inner">
           <div class="carousel-item active">
-            <div class="col-12 col-md-4">
-              <div class="card mb-2">
-                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (36).jpg" alt="Card image cap">
-                <div class="card-body">
-                  <h4 class="card-title font-weight-bold">Card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                  <a class="btn btn-primary btn-md btn-rounded">Button</a>
-                </div>
-              </div>
+            <div class="row">
+              <div class="col"><img src="{{URL::asset('/images/slider1.jpeg')}}" class="img-fluid" alt="3 slide"></div>
+              <div class="col"><img src="{{URL::asset('/images/slider2.jpeg')}}" class="img-fluid" alt="2 slide"></div>
+              <div class="col"><img src="{{URL::asset('/images/slider3.jpeg')}}" class="img-fluid" alt="2 slide"></div>
+              <div class="col"><img src="{{URL::asset('/images/slider4.jpeg')}}" class="img-fluid" alt="3 slide"></div>
+              <div class="col"><img src="{{URL::asset('/images/slider5.jpeg')}}" class="img-fluid" alt="1 slide"></div>
             </div>
           </div>
           <div class="carousel-item">
-            <div class="col-12 col-md-4">
-              <div class="card mb-2">
-                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (34).jpg"
-                  alt="Card image cap">
-                <div class="card-body">
-                  <h4 class="card-title font-weight-bold">Card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                  <a class="btn btn-primary btn-md btn-rounded">Button</a>
-                </div>
-              </div>
-            </div>
-          </div>
-            <div class="carousel-item">
-              <div class="col-12 col-md-4">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg"
-                    alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title font-weight-bold">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary btn-md btn-rounded">Button</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="col-12 col-md-4">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (29).jpg"
-                    alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title font-weight-bold">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary btn-md btn-rounded">Button</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="col-12 col-md-4">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (30).jpg"
-                    alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title font-weight-bold">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary btn-md btn-rounded">Button</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="col-12 col-md-4">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/img (27).jpg"
-                    alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title font-weight-bold">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary btn-md btn-rounded">Button</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> --}}
-
-        <div class="content">
-
-            {{-- <div class="row">
-              @foreach($products as $product)
-              <div class="col-sm-3">
-                <div class="card">
-                  <img src="{{ URL::asset($product->image) }}"  class="image">
-                  <div class="middle">
-                    <a href="{{action('ProductController@viewMore', $product->id )}}" class="btn btn-primary">View more</a>
-                  </div>
-                </div>
-              </div>
-              @endforeach
-            </div> --}}
-
             <div class="row">
-                @foreach($products as $product)
-                <div class="col-md-4">
-                  <div class="card mb-2">
-
-                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
-                      alt="Card image cap">
-                    <div class="card-body">
-                      <h4 class="card-title">Card title</h4>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                      <a class="btn btn-primary">Button</a>
-                    </div>
-
-                  </div>
-                </div>
-                @endforeach
+              <div class="col"><img src="{{URL::asset('/images/slider2.jpeg')}}" class="img-fluid" alt="2 slide"></div>
+              <div class="col"><img src="{{URL::asset('/images/slider3.jpeg')}}" class="img-fluid" alt="3 slide"></div>
+              <div class="col"><img src="{{URL::asset('/images/slider4.jpeg')}}" class="img-fluid" alt="2 slide"></div>
+              <div class="col"><img src="{{URL::asset('/images/slider5.jpeg')}}" class="img-fluid" alt="3 slide"></div>
+              <div class="col"><img src="{{URL::asset('/images/slider1.jpeg')}}" class="img-fluid" alt="1 slide"></div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col"><img src="{{URL::asset('/images/slider3.jpeg')}}" class="img-fluid" alt="2 slide"></div>
+              <div class="col"><img src="{{URL::asset('/images/slider4.jpeg')}}" class="img-fluid" alt="3 slide"></div>
+              <div class="col"><img src="{{URL::asset('/images/slider5.jpeg')}}" class="img-fluid" alt="2 slide"></div>
+              <div class="col"><img src="{{URL::asset('/images/slider1.jpeg')}}" class="img-fluid" alt="3 slide"></div>
+              <div class="col"><img src="{{URL::asset('/images/slider2.jpeg')}}" class="img-fluid" alt="1 slide"></div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col"><img src="{{URL::asset('/images/slider4.jpeg')}}" class="img-fluid" alt="2 slide"></div>
+              <div class="col"><img src="{{URL::asset('/images/slider5.jpeg')}}" class="img-fluid" alt="3 slide"></div>
+              <div class="col"><img src="{{URL::asset('/images/slider1.jpeg')}}" class="img-fluid" alt="2 slide"></div>
+              <div class="col"><img src="{{URL::asset('/images/slider2.jpeg')}}" class="img-fluid" alt="3 slide"></div>
+              <div class="col"><img src="{{URL::asset('/images/slider3.jpeg')}}" class="img-fluid" alt="1 slide"></div>
+            </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col"><img src="{{URL::asset('/images/slider5.jpeg')}}" class="img-fluid" alt="2 slide"></div>
+            <div class="col"><img src="{{URL::asset('/images/slider1.jpeg')}}" class="img-fluid" alt="3 slide"></div>
+            <div class="col"><img src="{{URL::asset('/images/slider2.jpeg')}}" class="img-fluid" alt="2 slide"></div>
+            <div class="col"><img src="{{URL::asset('/images/slider3.jpeg')}}" class="img-fluid" alt="3 slide"></div>
+            <div class="col"><img src="{{URL::asset('/images/slider4.jpeg')}}" class="img-fluid" alt="1 slide"></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  {{-- main content --}}
+  <div class="content">
+    <div class="category">
+      <div class="card">
+        <div class="card-header">
+          <h2 style="color: black;">Categories:</h2>
+        </div>
+        <div class="card-body">
+          @foreach($categories as $category)
+            <li><a class="category_style" href={{action('ProductController@filterByCategory', $category->id) }}>{{ $category->name }}</a></li>
+          @endforeach
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        @foreach($products as $product)
+          <div class="col-md-4">
+            <div class="card mb-2">
+              <img src="{{ URL::asset($product->image) }}" height="250px" width="100%">
+              <div class="card-body">
+                <h4 class="card-title">{{ $product->name }}</h4>
+                <p class="card-text">{{ $product->price }} rs</p>
+                <a href="{{action('ProductController@viewMore', $product->id)}}" class="btn buy_now"><i class="fa fa-shopping-bag" aria-hidden="true"></i>View more</a>
+              </div>
+            </div>
+          </div>
+        @endforeach
+      </div>
+    </div>
   </div>
+  <script>
+    $('#bs4-multi-slide-carousel').carousel({
+      interval: 1000 * 3
+    })
+  </script>
   <script src="{{ asset('js/app.js') }}"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

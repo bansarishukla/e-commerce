@@ -26,11 +26,13 @@ Route::group(['middleware' => ['auth','admin']], function () {
     Route::post('/product/{id}','ProductController@update');
     Route::resource('/category','CategoryController');
     Route::get('/order-list', 'OrderController@displayOrder');
+    Route::get('/order-list/{id}', 'OrderController@destroy');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/','ProductController@getProduct');
 Route::get('/viewmore/{id}/', 'ProductController@viewMore');
+Route::get('/products/{id}/filter', 'ProductController@filterByCategory');
 
 Route::group(['middleware' => ['auth']], function () {
   Route::resource('/order', 'OrderController');

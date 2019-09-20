@@ -1,8 +1,5 @@
 <template>
   <div class="main">
-    <!-- <div class="title">
-      <p>Add product</p>
-    </div> -->
     <div class="content">
       <form @submit.prevent="createProduct()">
         <div class="form-group">

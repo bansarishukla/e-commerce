@@ -7,10 +7,8 @@
     <div class="container-fliud">
       <div class="main">
         <div class="content">
-          {{-- <order-component /> --}}
-          <order-component :post-data="{{ json_encode($orders) }}"></order-component>
+          <order-component :post-data="{{ json_encode($orders) }}" :product="{{ $product }}"></order-component>
         </div>
-        {{-- {{ $products->name }} --}}
       </div>
     </div>
   </body>

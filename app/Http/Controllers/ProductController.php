@@ -157,9 +157,15 @@ class ProductController extends Controller
     $products = Product::findOrFail($id);
     return view('viewmore_product', compact('products'));
   }
-  public function aaa(Request $id)
+  // public function aaa(Request $id)
+  // {
+  //   $products = Product::find($id);
+  //   return view('order', compact(['products']));
+  // }
+  public function filterByCategory($id)
   {
-    $products = Product::find($id);
-    return view('order', compact(['products']));
+    $category = Category::find($id);
+    $products = $category->products;
+    return view('showProductsByCategory', compact('category', 'products'));
   }
 }

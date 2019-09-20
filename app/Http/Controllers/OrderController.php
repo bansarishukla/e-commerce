@@ -25,10 +25,12 @@ class OrderController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function create()
+  public function create(Request $request)
   {
-    // $orders = Order::all();
-    // return view('order', compact(['orders']));
+    $product = Product::where('id', $request->id)->first();
+    $orders = Order::all();
+
+    return view('order', compact(['orders', 'product']));
   }
 
   /**
@@ -54,7 +56,8 @@ class OrderController extends Controller
     $order->name_on_card = $request->name_on_card;
     $order->card_number = $request->card_number;
     $order->user_id = Auth::user()->id;
-    $order->amount = $request->amount;
+    $order->product_id = $request->product_id;
+    $order->price = $request->price;
     $order->save();
 
     return response()->json([
@@ -102,9 +105,13 @@ class OrderController extends Controller
    * @param  \App\Order  $order
    * @return \Illuminate\Http\Response
    */
-  public function destroy(Order $order)
+  public function destroy($id)
   {
-      //
+    $orders = Order::findOrFail($id);
+    $orders->delete();
+    return response()->json([
+      'status' => 'Delete'
+    ]);
   }
   public function displayOrder(Request $request)
   {

@@ -25,7 +25,8 @@ Vue.component('category-component', require('./components/Category.vue').default
 Vue.component('display-product', require('./components/DisplayProducts.vue').default);
 Vue.component('edit-product', require('./components/EditProduct.vue').default);
 Vue.component('order-component', require('./components/Order.vue').default);
-Vue.component('modal-component',require('./components/ModalLogin.vue').default);
+Vue.component('order-display', require('./components/Order_display.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

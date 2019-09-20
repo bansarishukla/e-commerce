@@ -16,6 +16,7 @@ class CreateOrdersTable extends Migration
     Schema::create('orders', function (Blueprint $table) {
       $table->bigIncrements('id');
       $table->unsignedInteger('user_id')->nullable();
+      $table->unsignedInteger('product_id')->nullable();
       // $table->foreign('user_id')->references('id')->on('users');
       $table->string('name');
       $table->bigInteger('mobile');
@@ -29,8 +30,7 @@ class CreateOrdersTable extends Migration
       $table->string('address_type');
       $table->string('name_on_card');
       $table->string('card_number');
-      // $table->integer('subtotal')->nullable();
-      // $table->integer('total')->nullable();
+      $table->integer('price')->nullable();
       $table->timestamps();
     });
   }

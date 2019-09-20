@@ -47,8 +47,11 @@
             <input type="radio" name="type" value="work" v-model="order.address_type"> Work (Delivery between 10 AM - 5 PM)
           </div>
         </div>
+        <div class="col-sm-5">
+          <input type="text" name="product_id" class="form-control" v-model="order.product_id">
+        </div>
         <p class="payment">Payment Details</p>
-        <input type="text" class="form-control" id="inputCardnumber" v-model="price">
+        <input type="text" class="form-control" v-model="order.price">
         <div class="form-group row">
           <div class="col-sm-5">
             <input type="text" class="form-control" id="inputCardname" v-model="order.name_on_card" placeholder="Name on card">
@@ -69,11 +72,15 @@ export default {
       type: Array,
       required: true
     },
+    product: {
+      type: Array,
+      required: true
+    },
   },
   data() {
     return {
       list: [],
-      price: '',
+      productList: [],
       order: {
         name: '',
         mobile: '',
@@ -87,17 +94,23 @@ export default {
         address_type: '',
         name_on_card: '',
         card_number: '',
-        amount: '',
+        product_id: '',
+        price: '',
       },
     };
   },
   mounted() {
-    console.log('mounted');
+    console.log('mounted', this.product);
     if(this.postData)
     {
       this.list = this.postData
     }
-    this.fetchPrice()
+    // if(this.product)
+    // {
+    //   this.productList = this.product
+    // }
+    this.order.product_id = this.product.id
+    this.order.price = this.product.price
   },
   methods: {
     async orderProduct()
@@ -113,9 +126,10 @@ export default {
         landmark: this.order.landmark,
         alternate_mobile: this.order.alternate_mobile,
         address_type: this.order.address_type,
-        amount: this.price,
         name_on_card: this.order.name_on_card,
-        card_number: this.order.card_number
+        card_number: this.order.card_number,
+        product_id: this.order.product_id,
+        price: this.order.price
       }
       console.log(data);
       axios.post('/order', data)
@@ -131,19 +145,13 @@ export default {
           this.order.alternate_mobile = '';
           this.order.address_type = '';
           this.order.name_on_card = '';
-          this.order.price = '';
           this.order.card_number = '';
+          this.order.product_id = '';
+          this.order.price = '';
           this.list.push(res.data.order)
         })
         .catch((err) => console.error(err));
     },
-    async fetchPrice()
-    {
-      let res = await axios.get('/product')
-      if (res.data) {
-        this.price = res.data.amount
-      }
-    }
   }
 };
 </script>

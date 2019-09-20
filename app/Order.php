@@ -8,6 +8,7 @@ class Order extends Model
 {
   protected $fillable = [
     'user_id',
+    'product_id',
     'name',
     'mobile',
     'pincode',
@@ -19,14 +20,15 @@ class Order extends Model
     'alternate_mobile',
     'address_type',
     'name_on_card',
-    'card_number'
+    'card_number',
+    'price'
   ];
   public function users()
   {
-    return $this->belongs('App\User');
+    return $this->belongsTo('App\User');
   }
   public function products()
   {
-    return $this->belongsToMany('App\Product');
+    return $this->hasOne('App\Product');
   }
 }

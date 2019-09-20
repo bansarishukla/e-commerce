@@ -48,15 +48,6 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="inputSelectedCat" class="col-sm-2 col-form-label">Selected Categories</label>
-          <div
-              v-for="(category,index) in formData.categories"
-              :key="index"
-              class="col-sm-1"
-          >{{ category.name }}
-          </div>
-      </div>
-        <div class="form-group row">
           <label for="inputSelectCat" class="col-sm-1 col-form-label">Select Category</label>
           {{ selectedCategories }}
           <select v-model="selectedCategories" multiple>
@@ -66,7 +57,7 @@
               {{ category.name }}
             </option>
           </select>
-      </div>
+        </div>
         <button type="submit" class="btn btn-primary">Update</button>
       </form>
     </div>
@@ -107,6 +98,7 @@ export default {
       this.formData.price = this.editData.price;
       this.formData.quantity = this.editData.quantity;
       this.formData.categories = this.editData.categories;
+      this.selectedCategories = [ ...this.editData.categories.map((categories) => categories.id)]
       this.fetchCategory();
     }
   },

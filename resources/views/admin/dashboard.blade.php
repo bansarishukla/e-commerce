@@ -11,7 +11,7 @@
                 <li class="list"><i class="fa fa-tag" aria-hidden="true"></i><a href="/product">Add Products</a></li>
                 <li class="list"><i class="fa fa-tag" aria-hidden="true"></i><a href="/product/create">Product List</a></li>
                 <li class="list"><i class="fa fa-tag" aria-hidden="true"></i><a href="/category/create">Categories</a></li>
-                <li class="list"><i class="fa fa-first-order" aria-hidden="true"></i>Orders</li>
+                <li class="list"><i class="fa fa-first-order" aria-hidden="true"></i><a href="/order-list">Orders</a></li>
               </ul>
             </div>
       </div>
