@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Category;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -38,13 +39,6 @@ class ProductController extends Controller
    */
   public function store(Request $request)
   {
-    // $this->validate($request, [
-    //   'name'=>'required',
-    //   'image'=>'required',
-    //   'description'=>'required',
-    //   'full_description'=>'required',
-    //   'price'=>'required'
-    // ]);
 
     $product= new Product;
 
@@ -155,17 +149,17 @@ class ProductController extends Controller
   }
   public function viewMore($id) {
     $products = Product::findOrFail($id);
-    return view('viewmore_product', compact('products'));
+    return view('users.viewmore_product', compact('products'));
   }
-  // public function aaa(Request $id)
-  // {
-  //   $products = Product::find($id);
-  //   return view('order', compact(['products']));
-  // }
   public function filterByCategory($id)
   {
     $category = Category::find($id);
     $products = $category->products;
-    return view('showProductsByCategory', compact('category', 'products'));
+    return view('users.showProductsByCategory', compact('category', 'products'));
   }
+  public function user_list()
+   {
+     $users = Auth::user()->all();
+     return view('admin.user_list')->with(['user' => $users])->with(compact('users'));
+   }
 }

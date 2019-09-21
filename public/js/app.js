@@ -2500,6 +2500,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     postData: {
@@ -2538,11 +2542,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     if (this.postData) {
       this.list = this.postData;
-    } // if(this.product)
-    // {
-    //   this.productList = this.product
-    // }
-
+    }
 
     this.order.product_id = this.product.id;
     this.order.price = this.product.price;
@@ -40383,9 +40383,7 @@ var staticRenderFns = [
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
+              _vm._v("\n          I'm an example component.\n        ")
             ])
           ])
         ])
@@ -40738,7 +40736,7 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
-              attrs: { type: "text", name: "product_id" },
+              attrs: { type: "hidden", name: "product_id" },
               domProps: { value: _vm.order.product_id },
               on: {
                 input: function($event) {
@@ -40753,27 +40751,31 @@ var render = function() {
           _vm._v(" "),
           _c("p", { staticClass: "payment" }, [_vm._v("Payment Details")]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.order.price,
-                expression: "order.price"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text" },
-            domProps: { value: _vm.order.price },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("div", { staticClass: "form-group row" }, [
+            _c("div", { staticClass: "col-sm-10" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.order.price,
+                    expression: "order.price"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.order.price },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.order, "price", $event.target.value)
+                  }
                 }
-                _vm.$set(_vm.order, "price", $event.target.value)
-              }
-            }
-          }),
+              })
+            ])
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group row" }, [
             _c("div", { staticClass: "col-sm-5" }, [

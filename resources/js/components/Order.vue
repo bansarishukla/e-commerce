@@ -48,10 +48,14 @@
           </div>
         </div>
         <div class="col-sm-5">
-          <input type="text" name="product_id" class="form-control" v-model="order.product_id">
+          <input type="hidden" name="product_id" class="form-control" v-model="order.product_id">
         </div>
         <p class="payment">Payment Details</p>
-        <input type="text" class="form-control" v-model="order.price">
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <input type="text" class="form-control" v-model="order.price">
+          </div>
+        </div>
         <div class="form-group row">
           <div class="col-sm-5">
             <input type="text" class="form-control" id="inputCardname" v-model="order.name_on_card" placeholder="Name on card">
@@ -105,10 +109,6 @@ export default {
     {
       this.list = this.postData
     }
-    // if(this.product)
-    // {
-    //   this.productList = this.product
-    // }
     this.order.product_id = this.product.id
     this.order.price = this.product.price
   },

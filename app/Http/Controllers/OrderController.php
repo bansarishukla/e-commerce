@@ -17,7 +17,7 @@ class OrderController extends Controller
   public function index()
   {
     $orders = Order::all();
-    return view('order', compact(['orders']));
+    return view('users.order', compact(['orders']));
   }
 
   /**
@@ -30,7 +30,7 @@ class OrderController extends Controller
     $product = Product::where('id', $request->id)->first();
     $orders = Order::all();
 
-    return view('order', compact(['orders', 'product']));
+    return view('users.order', compact(['orders', 'product']));
   }
 
   /**

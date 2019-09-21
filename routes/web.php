@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth','admin']], function () {
     Route::resource('/category','CategoryController');
     Route::get('/order-list', 'OrderController@displayOrder');
     Route::get('/order-list/{id}', 'OrderController@destroy');
+    Route::get('/user-list', 'ProductController@user_list');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
