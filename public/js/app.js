@@ -2511,7 +2511,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       required: true
     },
     product: {
-      type: Array,
+      type: Object,
       required: true
     }
   },

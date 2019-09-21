@@ -471,19 +471,10 @@
           <li><a href="/product/create">Product List</a><span class="icon"><i class="fa fa-list" aria-hidden="true"></i></span></li>
           <li><a href="/category/create">Categories</a><span class="icon"><i class="fa fa-tag" aria-hidden="true"></i></span></li>
           <li><a href="/order-list">Orders</a><span class="icon"><i class="fa fa-first-order" aria-hidden="true"></i></span></li>
+          <li><a href="/user-list">User List</a><span class="icon"><i class="fa fa-user" aria-hidden="true"></i></span></li>
         </ul>
       </div>
     </nav>
   </div>
-
-  <script>
-    $('.nav-toggle').click(function(e) {
-
-      e.preventDefault();
-      $("html").toggleClass("openNav");
-      $(".nav-toggle").toggleClass("active");
-
-    });
-  </script>
   </body>
 </html>

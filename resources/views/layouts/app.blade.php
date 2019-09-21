@@ -39,9 +39,6 @@
   <div id="app">
     <nav class="navbar navbar-expand-md">
       <div class="container-fluid">
-        <a href="#" class="navbar-brand item">Home</a>
-        <a href="#" class="navbar-brand item">About</a>
-        <a href="#" class="navbar-brand item">Contact</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -54,10 +51,12 @@
 
           <!-- Right Side Of Navbar -->
           <ul class="navbar-nav ml-auto">
+            <a href="#" class="navbar-brand item">Home</a>
+            <a href="#" class="navbar-brand item">About</a>
+            <a href="#" class="navbar-brand item">Contact</a>
             <!-- Authentication Links -->
             @guest
               <li class="nav-item">
-                <i class="fa fa-sign-in" aria-hidden="true"></i>
                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
               </li>
               @if (Route::has('register'))
