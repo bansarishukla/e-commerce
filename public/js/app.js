@@ -1914,9 +1914,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _createCategories = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _this = this;
-
-        var data;
+        var data, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -1925,15 +1923,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   name: this.category.name
                 };
                 console.log(data);
-                axios.post('/category', data).then(function (res) {
-                  _this.category.name = '';
+                _context.next = 4;
+                return axios.post('/category', data);
 
-                  _this.list.push(res.data.category);
-                })["catch"](function (err) {
-                  return console.error(err);
-                });
+              case 4:
+                res = _context.sent;
+                this.category.name = '';
+                this.list.push(res.data.category);
+                console.log(res);
 
-              case 3:
+                if (!res.data.succsess) {
+                  _context.next = 11;
+                  break;
+                }
+
+                this.$toaster.success('Product is added successfully');
+                return _context.abrupt("return", true);
+
+              case 11:
+                this.$toaster.error('error');
+                return _context.abrupt("return", false);
+
+              case 13:
               case "end":
                 return _context.stop();
             }
@@ -1948,10 +1959,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return createCategories;
     }(),
     deleteCategory: function deleteCategory(id, index) {
-      var _this2 = this;
+      var _this = this;
 
       axios["delete"]('/category/' + id).then(function (res) {
-        _this2.list.splice(index, 1);
+        _this.list.splice(index, 1);
       })["catch"](function (err) {
         return console.error(err);
       });
@@ -2836,9 +2847,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _createProduct = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _this = this;
-
-        var data, product;
+        var data, product, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -2861,25 +2870,38 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 product.append('full_description', data.full_description);
                 product.append('price', data.price);
                 product.append('quantity', data.quantity);
-                axios.post('/product', product, {
+                _context.next = 12;
+                return axios.post('/product', product, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
                   }
-                }).then(function (res) {
-                  _this.product.name = '';
-                  _this.product.image = '';
-                  _this.product.categoryList = '';
-                  _this.product.description = '';
-                  _this.product.full_description = '';
-                  _this.product.price = '';
-                  _this.product.quantity = '';
-
-                  _this.list.push(res.data.product);
-                })["catch"](function (err) {
-                  return console.error(err);
                 });
 
-              case 11:
+              case 12:
+                res = _context.sent;
+                this.product.name = '';
+                this.product.image = '';
+                this.product.categoryList = '';
+                this.product.description = '';
+                this.product.full_description = '';
+                this.product.price = '';
+                this.product.quantity = '';
+                this.list.push(res.data.product);
+                console.log(res);
+
+                if (!res.data.succsess) {
+                  _context.next = 25;
+                  break;
+                }
+
+                this.$toaster.success('Product is added successfully');
+                return _context.abrupt("return", true);
+
+              case 25:
+                this.$toaster.error('error');
+                return _context.abrupt("return", false);
+
+              case 27:
               case "end":
                 return _context.stop();
             }
@@ -7372,6 +7394,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 }));
 //# sourceMappingURL=bootstrap.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/v-toaster/dist/v-toaster.css":
+/*!***********************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/v-toaster/dist/v-toaster.css ***!
+  \***********************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".v-toaster{position:fixed;top:50px;right:0;z-index:10000;width:300px;padding-left:10px;padding-right:10px}.v-toaster .v-toast{margin-bottom:10px;transition:all .3s ease;border:1px solid #454d5d;border-radius:8px;color:#fff;display:block;padding:1rem;background:rgba(69,77,93,.9);border-color:#454d5d}.v-toaster .v-toast.v-toast-enter,.v-toaster .v-toast.v-toast-leave-to{transform:translate(100%)}.v-toaster .v-toast.v-toast-success{background:rgba(50,182,67,.9);border-color:#32b643}.v-toaster .v-toast.v-toast-warning{background:rgba(255,183,0,.9);border-color:#ffb700}.v-toaster .v-toast.v-toast-info{background:rgba(91,192,222,.9);border-color:#5bc0de}.v-toaster .v-toast.v-toast-error{background:rgba(232,86,0,.9);border-color:#e85600}.v-toaster .v-toast.v-toast-primary{background:rgba(66,139,202,.9);border-color:#428bca}.v-toaster .v-toast .v-toast-btn-clear{background:transparent;border:0;color:currentColor;opacity:.45;text-decoration:none;float:right;cursor:pointer}.v-toaster .v-toast .v-toast-btn-clear:hover{opacity:.85}.v-toaster .v-toast .v-toast-btn-clear:before{content:\"\\2715\"}@media (max-width:300px){.v-toaster{width:100%}}", ""]);
+
+// exports
 
 
 /***/ }),
@@ -39788,6 +39829,529 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/toastr/toastr.js":
+/*!***************************************!*\
+  !*** ./node_modules/toastr/toastr.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
+ * Toastr
+ * Copyright 2012-2015
+ * Authors: John Papa, Hans Fjällemark, and Tim Ferrell.
+ * All Rights Reserved.
+ * Use, reproduction, distribution, and modification of this code is subject to the terms and
+ * conditions of the MIT license, available at http://www.opensource.org/licenses/mit-license.php
+ *
+ * ARIA Support: Greta Krafsig
+ *
+ * Project: https://github.com/CodeSeven/toastr
+ */
+/* global define */
+(function (define) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function ($) {
+        return (function () {
+            var $container;
+            var listener;
+            var toastId = 0;
+            var toastType = {
+                error: 'error',
+                info: 'info',
+                success: 'success',
+                warning: 'warning'
+            };
+
+            var toastr = {
+                clear: clear,
+                remove: remove,
+                error: error,
+                getContainer: getContainer,
+                info: info,
+                options: {},
+                subscribe: subscribe,
+                success: success,
+                version: '2.1.4',
+                warning: warning
+            };
+
+            var previousToast;
+
+            return toastr;
+
+            ////////////////
+
+            function error(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.error,
+                    iconClass: getOptions().iconClasses.error,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function getContainer(options, create) {
+                if (!options) { options = getOptions(); }
+                $container = $('#' + options.containerId);
+                if ($container.length) {
+                    return $container;
+                }
+                if (create) {
+                    $container = createContainer(options);
+                }
+                return $container;
+            }
+
+            function info(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.info,
+                    iconClass: getOptions().iconClasses.info,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function subscribe(callback) {
+                listener = callback;
+            }
+
+            function success(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.success,
+                    iconClass: getOptions().iconClasses.success,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function warning(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.warning,
+                    iconClass: getOptions().iconClasses.warning,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function clear($toastElement, clearOptions) {
+                var options = getOptions();
+                if (!$container) { getContainer(options); }
+                if (!clearToast($toastElement, options, clearOptions)) {
+                    clearContainer(options);
+                }
+            }
+
+            function remove($toastElement) {
+                var options = getOptions();
+                if (!$container) { getContainer(options); }
+                if ($toastElement && $(':focus', $toastElement).length === 0) {
+                    removeToast($toastElement);
+                    return;
+                }
+                if ($container.children().length) {
+                    $container.remove();
+                }
+            }
+
+            // internal functions
+
+            function clearContainer (options) {
+                var toastsToClear = $container.children();
+                for (var i = toastsToClear.length - 1; i >= 0; i--) {
+                    clearToast($(toastsToClear[i]), options);
+                }
+            }
+
+            function clearToast ($toastElement, options, clearOptions) {
+                var force = clearOptions && clearOptions.force ? clearOptions.force : false;
+                if ($toastElement && (force || $(':focus', $toastElement).length === 0)) {
+                    $toastElement[options.hideMethod]({
+                        duration: options.hideDuration,
+                        easing: options.hideEasing,
+                        complete: function () { removeToast($toastElement); }
+                    });
+                    return true;
+                }
+                return false;
+            }
+
+            function createContainer(options) {
+                $container = $('<div/>')
+                    .attr('id', options.containerId)
+                    .addClass(options.positionClass);
+
+                $container.appendTo($(options.target));
+                return $container;
+            }
+
+            function getDefaults() {
+                return {
+                    tapToDismiss: true,
+                    toastClass: 'toast',
+                    containerId: 'toast-container',
+                    debug: false,
+
+                    showMethod: 'fadeIn', //fadeIn, slideDown, and show are built into jQuery
+                    showDuration: 300,
+                    showEasing: 'swing', //swing and linear are built into jQuery
+                    onShown: undefined,
+                    hideMethod: 'fadeOut',
+                    hideDuration: 1000,
+                    hideEasing: 'swing',
+                    onHidden: undefined,
+                    closeMethod: false,
+                    closeDuration: false,
+                    closeEasing: false,
+                    closeOnHover: true,
+
+                    extendedTimeOut: 1000,
+                    iconClasses: {
+                        error: 'toast-error',
+                        info: 'toast-info',
+                        success: 'toast-success',
+                        warning: 'toast-warning'
+                    },
+                    iconClass: 'toast-info',
+                    positionClass: 'toast-top-right',
+                    timeOut: 5000, // Set timeOut and extendedTimeOut to 0 to make it sticky
+                    titleClass: 'toast-title',
+                    messageClass: 'toast-message',
+                    escapeHtml: false,
+                    target: 'body',
+                    closeHtml: '<button type="button">&times;</button>',
+                    closeClass: 'toast-close-button',
+                    newestOnTop: true,
+                    preventDuplicates: false,
+                    progressBar: false,
+                    progressClass: 'toast-progress',
+                    rtl: false
+                };
+            }
+
+            function publish(args) {
+                if (!listener) { return; }
+                listener(args);
+            }
+
+            function notify(map) {
+                var options = getOptions();
+                var iconClass = map.iconClass || options.iconClass;
+
+                if (typeof (map.optionsOverride) !== 'undefined') {
+                    options = $.extend(options, map.optionsOverride);
+                    iconClass = map.optionsOverride.iconClass || iconClass;
+                }
+
+                if (shouldExit(options, map)) { return; }
+
+                toastId++;
+
+                $container = getContainer(options, true);
+
+                var intervalId = null;
+                var $toastElement = $('<div/>');
+                var $titleElement = $('<div/>');
+                var $messageElement = $('<div/>');
+                var $progressElement = $('<div/>');
+                var $closeElement = $(options.closeHtml);
+                var progressBar = {
+                    intervalId: null,
+                    hideEta: null,
+                    maxHideTime: null
+                };
+                var response = {
+                    toastId: toastId,
+                    state: 'visible',
+                    startTime: new Date(),
+                    options: options,
+                    map: map
+                };
+
+                personalizeToast();
+
+                displayToast();
+
+                handleEvents();
+
+                publish(response);
+
+                if (options.debug && console) {
+                    console.log(response);
+                }
+
+                return $toastElement;
+
+                function escapeHtml(source) {
+                    if (source == null) {
+                        source = '';
+                    }
+
+                    return source
+                        .replace(/&/g, '&amp;')
+                        .replace(/"/g, '&quot;')
+                        .replace(/'/g, '&#39;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;');
+                }
+
+                function personalizeToast() {
+                    setIcon();
+                    setTitle();
+                    setMessage();
+                    setCloseButton();
+                    setProgressBar();
+                    setRTL();
+                    setSequence();
+                    setAria();
+                }
+
+                function setAria() {
+                    var ariaValue = '';
+                    switch (map.iconClass) {
+                        case 'toast-success':
+                        case 'toast-info':
+                            ariaValue =  'polite';
+                            break;
+                        default:
+                            ariaValue = 'assertive';
+                    }
+                    $toastElement.attr('aria-live', ariaValue);
+                }
+
+                function handleEvents() {
+                    if (options.closeOnHover) {
+                        $toastElement.hover(stickAround, delayedHideToast);
+                    }
+
+                    if (!options.onclick && options.tapToDismiss) {
+                        $toastElement.click(hideToast);
+                    }
+
+                    if (options.closeButton && $closeElement) {
+                        $closeElement.click(function (event) {
+                            if (event.stopPropagation) {
+                                event.stopPropagation();
+                            } else if (event.cancelBubble !== undefined && event.cancelBubble !== true) {
+                                event.cancelBubble = true;
+                            }
+
+                            if (options.onCloseClick) {
+                                options.onCloseClick(event);
+                            }
+
+                            hideToast(true);
+                        });
+                    }
+
+                    if (options.onclick) {
+                        $toastElement.click(function (event) {
+                            options.onclick(event);
+                            hideToast();
+                        });
+                    }
+                }
+
+                function displayToast() {
+                    $toastElement.hide();
+
+                    $toastElement[options.showMethod](
+                        {duration: options.showDuration, easing: options.showEasing, complete: options.onShown}
+                    );
+
+                    if (options.timeOut > 0) {
+                        intervalId = setTimeout(hideToast, options.timeOut);
+                        progressBar.maxHideTime = parseFloat(options.timeOut);
+                        progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
+                        if (options.progressBar) {
+                            progressBar.intervalId = setInterval(updateProgress, 10);
+                        }
+                    }
+                }
+
+                function setIcon() {
+                    if (map.iconClass) {
+                        $toastElement.addClass(options.toastClass).addClass(iconClass);
+                    }
+                }
+
+                function setSequence() {
+                    if (options.newestOnTop) {
+                        $container.prepend($toastElement);
+                    } else {
+                        $container.append($toastElement);
+                    }
+                }
+
+                function setTitle() {
+                    if (map.title) {
+                        var suffix = map.title;
+                        if (options.escapeHtml) {
+                            suffix = escapeHtml(map.title);
+                        }
+                        $titleElement.append(suffix).addClass(options.titleClass);
+                        $toastElement.append($titleElement);
+                    }
+                }
+
+                function setMessage() {
+                    if (map.message) {
+                        var suffix = map.message;
+                        if (options.escapeHtml) {
+                            suffix = escapeHtml(map.message);
+                        }
+                        $messageElement.append(suffix).addClass(options.messageClass);
+                        $toastElement.append($messageElement);
+                    }
+                }
+
+                function setCloseButton() {
+                    if (options.closeButton) {
+                        $closeElement.addClass(options.closeClass).attr('role', 'button');
+                        $toastElement.prepend($closeElement);
+                    }
+                }
+
+                function setProgressBar() {
+                    if (options.progressBar) {
+                        $progressElement.addClass(options.progressClass);
+                        $toastElement.prepend($progressElement);
+                    }
+                }
+
+                function setRTL() {
+                    if (options.rtl) {
+                        $toastElement.addClass('rtl');
+                    }
+                }
+
+                function shouldExit(options, map) {
+                    if (options.preventDuplicates) {
+                        if (map.message === previousToast) {
+                            return true;
+                        } else {
+                            previousToast = map.message;
+                        }
+                    }
+                    return false;
+                }
+
+                function hideToast(override) {
+                    var method = override && options.closeMethod !== false ? options.closeMethod : options.hideMethod;
+                    var duration = override && options.closeDuration !== false ?
+                        options.closeDuration : options.hideDuration;
+                    var easing = override && options.closeEasing !== false ? options.closeEasing : options.hideEasing;
+                    if ($(':focus', $toastElement).length && !override) {
+                        return;
+                    }
+                    clearTimeout(progressBar.intervalId);
+                    return $toastElement[method]({
+                        duration: duration,
+                        easing: easing,
+                        complete: function () {
+                            removeToast($toastElement);
+                            clearTimeout(intervalId);
+                            if (options.onHidden && response.state !== 'hidden') {
+                                options.onHidden();
+                            }
+                            response.state = 'hidden';
+                            response.endTime = new Date();
+                            publish(response);
+                        }
+                    });
+                }
+
+                function delayedHideToast() {
+                    if (options.timeOut > 0 || options.extendedTimeOut > 0) {
+                        intervalId = setTimeout(hideToast, options.extendedTimeOut);
+                        progressBar.maxHideTime = parseFloat(options.extendedTimeOut);
+                        progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
+                    }
+                }
+
+                function stickAround() {
+                    clearTimeout(intervalId);
+                    progressBar.hideEta = 0;
+                    $toastElement.stop(true, true)[options.showMethod](
+                        {duration: options.showDuration, easing: options.showEasing}
+                    );
+                }
+
+                function updateProgress() {
+                    var percentage = ((progressBar.hideEta - (new Date().getTime())) / progressBar.maxHideTime) * 100;
+                    $progressElement.width(percentage + '%');
+                }
+            }
+
+            function getOptions() {
+                return $.extend({}, getDefaults(), toastr.options);
+            }
+
+            function removeToast($toastElement) {
+                if (!$container) { $container = getContainer(); }
+                if ($toastElement.is(':visible')) {
+                    return;
+                }
+                $toastElement.remove();
+                $toastElement = null;
+                if ($container.children().length === 0) {
+                    $container.remove();
+                    previousToast = undefined;
+                }
+            }
+
+        })();
+    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+}(__webpack_require__(/*! !webpack amd define */ "./node_modules/webpack/buildin/amd-define.js")));
+
+
+/***/ }),
+
+/***/ "./node_modules/v-toaster/dist/v-toaster.css":
+/*!***************************************************!*\
+  !*** ./node_modules/v-toaster/dist/v-toaster.css ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./v-toaster.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/v-toaster/dist/v-toaster.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/v-toaster/dist/v-toaster.js":
+/*!**************************************************!*\
+  !*** ./node_modules/v-toaster/dist/v-toaster.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+(function(t,e){ true?module.exports=e():undefined})(this,function(){return function(t){function e(o){if(n[o])return n[o].exports;var r=n[o]={i:o,l:!1,exports:{}};return t[o].call(r.exports,r,r.exports,e),r.l=!0,r.exports}var n={};return e.m=t,e.c=n,e.i=function(t){return t},e.d=function(t,n,o){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:o})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p=".",e(e.s=6)}([function(t,e,n){var o=n(3);o.install=function(t,e){t.prototype.$toaster=new(t.extend(o))({propsData:e}),t.toaster=t.prototype.$toaster},t.exports=o},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={props:{timeout:{type:Number,default:1e4}},methods:{success:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};this.add(t,{theme:"v-toast-success",timeout:e.timeout})},info:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};this.add(t,{theme:"v-toast-info",timeout:e.timeout})},warning:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};this.add(t,{theme:"v-toast-warning",timeout:e.timeout})},error:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};this.add(t,{theme:"v-toast-error",timeout:e.timeout})},add:function(t,e){var n=this,o=e.theme,r=e.timeout;this.$parent||(this.$mount(),document.body.appendChild(this.$el));var i={message:t,theme:o,key:Date.now()+"-"+Math.random()};this.items.push(i),setTimeout(function(){return n.remove(i)},r||this.timeout)},remove:function(t){var e=this.items.indexOf(t);e>=0&&this.items.splice(e,1)}},data:function(){return{items:[]}}}},function(t,e){},function(t,e,n){n(2);var o=n(4)(n(1),n(5),null,null);t.exports=o.exports},function(t,e){t.exports=function(t,e,n,o){var r,i=t=t||{},s=typeof t.default;"object"!==s&&"function"!==s||(r=t,i=t.default);var u="function"==typeof i?i.options:i;if(e&&(u.render=e.render,u.staticRenderFns=e.staticRenderFns),n&&(u._scopeId=n),o){var a=u.computed||(u.computed={});Object.keys(o).forEach(function(t){var e=o[t];a[t]=function(){return e}})}return{esModule:r,exports:i,options:u}}},function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"v-toaster"},[n("transition-group",{attrs:{name:"v-toast"}},t._l(t.items,function(e){return n("div",{key:e.key,staticClass:"v-toast",class:(o={},o[e.theme]=e.theme,o)},[n("a",{staticClass:"v-toast-btn-clear",on:{click:function(n){t.remove(e)}}}),t._v(t._s(e.message))]);var o}))],1)},staticRenderFns:[]}},function(t,e,n){t.exports=n(0)}])});
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Category.vue?vue&type=template&id=33972369&":
 /*!***********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Category.vue?vue&type=template&id=33972369& ***!
@@ -40976,7 +41540,8 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 type: "text",
-                id: "inputName",
+                id: "productName",
+                name: "productName",
                 placeholder: "Product Name"
               },
               domProps: { value: _vm.product.name },
@@ -53271,6 +53836,20 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/webpack/buildin/amd-define.js":
+/*!***************************************!*\
+  !*** (webpack)/buildin/amd-define.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function() {
+	throw new Error("define cannot be used indirect");
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -53339,18 +53918,38 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var v_toaster__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! v-toaster */ "./node_modules/v-toaster/dist/v-toaster.js");
+/* harmony import */ var v_toaster__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(v_toaster__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var v_toaster_dist_v_toaster_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! v-toaster/dist/v-toaster.css */ "./node_modules/v-toaster/dist/v-toaster.css");
+/* harmony import */ var v_toaster_dist_v_toaster_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(v_toaster_dist_v_toaster_css__WEBPACK_IMPORTED_MODULE_2__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-// import Vue from "vue";
+
+
+ // import fontawesome from '@fortawesome/fontawesome';
+// import faSolid from '@fortawesome/fontawesome-free-solid';
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(v_toaster__WEBPACK_IMPORTED_MODULE_1___default.a, {
+  timeout: 5000
+});
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); // Vue.toasted.show(`${fontawesome.icon(faSolid.faCoffee).html} Hello`, {
+//   type: 'success',
+//   duration: 3000
+// });
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -53361,20 +53960,20 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
-Vue.component('product-component', __webpack_require__(/*! ./components/Product.vue */ "./resources/js/components/Product.vue")["default"]);
-Vue.component('category-component', __webpack_require__(/*! ./components/Category.vue */ "./resources/js/components/Category.vue")["default"]);
-Vue.component('display-product', __webpack_require__(/*! ./components/DisplayProducts.vue */ "./resources/js/components/DisplayProducts.vue")["default"]);
-Vue.component('edit-product', __webpack_require__(/*! ./components/EditProduct.vue */ "./resources/js/components/EditProduct.vue")["default"]);
-Vue.component('order-component', __webpack_require__(/*! ./components/Order.vue */ "./resources/js/components/Order.vue")["default"]);
-Vue.component('order-display', __webpack_require__(/*! ./components/Order_display.vue */ "./resources/js/components/Order_display.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('product-component', __webpack_require__(/*! ./components/Product.vue */ "./resources/js/components/Product.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('category-component', __webpack_require__(/*! ./components/Category.vue */ "./resources/js/components/Category.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('display-product', __webpack_require__(/*! ./components/DisplayProducts.vue */ "./resources/js/components/DisplayProducts.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('edit-product', __webpack_require__(/*! ./components/EditProduct.vue */ "./resources/js/components/EditProduct.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('order-component', __webpack_require__(/*! ./components/Order.vue */ "./resources/js/components/Order.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('order-display', __webpack_require__(/*! ./components/Order_display.vue */ "./resources/js/components/Order_display.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new Vue({
+var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app' // router: router,
 
 });
@@ -53400,6 +53999,8 @@ try {
   window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
   __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
+
+  window.toastr = __webpack_require__(/*! toastr */ "./node_modules/toastr/toastr.js");
 } catch (e) {}
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

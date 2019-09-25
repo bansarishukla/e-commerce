@@ -3,10 +3,22 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-// import Vue from "vue";
+import Vue from 'vue';
+import Toaster from 'v-toaster';
+import 'v-toaster/dist/v-toaster.css';
+// import fontawesome from '@fortawesome/fontawesome';
+// import faSolid from '@fortawesome/fontawesome-free-solid';
+
+Vue.use(Toaster, {timeout: 5000});
+
 require('./bootstrap');
 
 window.Vue = require('vue');
+
+// Vue.toasted.show(`${fontawesome.icon(faSolid.faCoffee).html} Hello`, {
+//   type: 'success',
+//   duration: 3000
+// });
 
 /**
  * The following block of code may be used to automatically register your

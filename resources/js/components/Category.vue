@@ -57,12 +57,16 @@ export default {
         name: this.category.name
       }
       console.log(data);
-      axios.post('/category',data)
-        .then((res) => {
-          this.category.name = '';
-          this.list.push(res.data.category)
-        })
-        .catch((err) => console.error(err));
+      let res = await axios.post('/category',data)
+        this.category.name = '';
+        this.list.push(res.data.category)
+        console.log(res)
+        if(res.data.succsess) {
+          this.$toaster.success('Product is added successfully')
+          return true
+        }
+        this.$toaster.error('error');
+        return false
     },
     deleteCategory(id, index)
     {

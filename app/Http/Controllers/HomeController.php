@@ -23,6 +23,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+      toastr()->error('error!');
+      return view('home');
+    }
+
+    public function notification()
+    {
+      session()->set('success','Item created successfully.');
+
+      return view('notification-check');
     }
 }

@@ -1,4 +1,9 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<link rel="stylesheet" href="v-toaster/dist/v-toaster.css">
+<script src="v-toaster/dist/v-toaster.js"></script>
+<script>
+  Vue.use(VToaster, {timeout: 5000})
+</script>
 @extends('layouts.app')
 
 @extends('layouts.sidebar')

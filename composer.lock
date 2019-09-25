@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f86809c27eba27e8aceb86b75e2d4e9",
+    "content-hash": "8665db4eca54eb3b883d6e9fa16602e1",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1473,6 +1473,69 @@
             "time": "2018-07-19T23:38:55+00:00"
         },
         {
+            "name": "realrashid/sweet-alert",
+            "version": "v2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/realrashid/sweet-alert.git",
+                "reference": "79412ca91857de578253585270abbf23397d5a67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/realrashid/sweet-alert/zipball/79412ca91857de578253585270abbf23397d5a67",
+                "reference": "79412ca91857de578253585270abbf23397d5a67",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.4.0|~5.8.0|~5.9.0|^6.0",
+                "php": "^7.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "RealRashid\\SweetAlert\\SweetAlertServiceProvider"
+                    ],
+                    "aliases": {
+                        "Alert": "RealRashid\\SweetAlert\\Facades\\Alert"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "RealRashid\\SweetAlert\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rashid Ali",
+                    "email": "realrashid05@gmail.com",
+                    "homepage": "https://realrashid.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A BEAUTIFUL, RESPONSIVE, CUSTOMIZABLE, ACCESSIBLE (WAI-ARIA) REPLACEMENT FOR JAVASCRIPT'S POPUP BOXES FOR LARAVEL BY RASHID ALI",
+            "homepage": "https://github.com/realrashid/sweet-alert",
+            "keywords": [
+                "alert",
+                "laravel",
+                "laravel-package",
+                "notifier",
+                "noty",
+                "sweet-alert",
+                "sweet-alert2",
+                "toast"
+            ],
+            "time": "2019-09-08T19:50:05+00:00"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v6.2.1",
             "source": {
@@ -2890,6 +2953,67 @@
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "time": "2017-11-27T11:13:29+00:00"
+        },
+        {
+            "name": "tjgazel/laravel-toastr",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tjgazel/laravel-toastr.git",
+                "reference": "9e5014cc8ae8e1b4cd22507e4b2ab64b87f1623e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tjgazel/laravel-toastr/zipball/9e5014cc8ae8e1b4cd22507e4b2ab64b87f1623e",
+                "reference": "9e5014cc8ae8e1b4cd22507e4b2ab64b87f1623e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/session": ">=5.0.0",
+                "illuminate/support": ">=5.0.0",
+                "php": ">=5.4.0"
+            },
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "TJGazel\\Toastr\\ToastrServiceProvider"
+                    ],
+                    "aliases": {
+                        "Toastr": "TJGazel\\Toastr\\Facades\\Toastr"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "helpers/helpers.php"
+                ],
+                "psr-4": {
+                    "TJGazel\\Toastr\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Talles Gazel",
+                    "email": "tjgazel@gmail.com"
+                }
+            ],
+            "description": "Toastr notifications for laravel 5.*",
+            "homepage": "https://github.com/tjgazel/laravel-toastr",
+            "keywords": [
+                "auto discover",
+                "facade",
+                "helper",
+                "laravel",
+                "notification",
+                "php",
+                "toastr"
+            ],
+            "time": "2019-06-25T17:06:56+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

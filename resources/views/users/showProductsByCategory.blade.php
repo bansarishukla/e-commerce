@@ -5,17 +5,17 @@
 @section('content')
   <body>
     <div class="container-fluid">
-      <div class="row">
+      <div class="row product">
         @if(count($products) > 0)
           @foreach($products as $product)
             <div class="col-md-3">
               <div class="card mb-2">
                 <img src="{{ URL::asset($product->image) }}" height="250px" width="100%">
-                <div class="card-body">
-                  <h4>{{ $product->name }}</h4>
-                  <p>{{ $product->price }} rs</p>
-                  <a class="btn buy_now" href="{{action('ProductController@viewMore', $product->id)}}"><i class="fa fa-shopping-bag" aria-hidden="true"></i>View more</a>
-                </div>
+              </div>
+              <div class="card-body">
+                <h4>{{ $product->name }}</h4>
+                <p>{{ $product->price }} rs</p>
+                <a class="btn buy_now" href="{{action('ProductController@viewMore', $product->id)}}"><i class="fa fa-shopping-bag" aria-hidden="true"></i>View more</a>
               </div>
             </div>
           @endforeach
@@ -33,12 +33,15 @@
     height: 300px;
     width: 300px;
   }
+  .product {
+    text-align: center;
+  }
   .buy_now {
     border: 1px solid black;
     color: black;
   }
   .buy_now:hover {
-    background-color: black;
+    /* background-color: black; */
     color: white;
     font-weight: bold;
   }

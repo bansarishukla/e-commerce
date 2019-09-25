@@ -45,15 +45,9 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Left Side Of Navbar -->
-          <ul class="navbar-nav mr-auto">
-
-          </ul>
 
           <!-- Right Side Of Navbar -->
           <ul class="navbar-nav ml-auto">
-            <a href="#" class="navbar-brand item">Home</a>
-            <a href="#" class="navbar-brand item">About</a>
-            <a href="#" class="navbar-brand item">Contact</a>
             <!-- Authentication Links -->
             @guest
               <li class="nav-item">
@@ -88,8 +82,9 @@
       </div>
     </nav>
     <main class="py-4">
-        @yield('content')
+      @yield('content')
     </main>
+    {!! toastr()->render() !!}
   </div>
 </body>
 </html>

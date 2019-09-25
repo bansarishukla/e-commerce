@@ -12,6 +12,9 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+
     <style>
       html, body {
         background-color: #fff;
@@ -24,27 +27,24 @@
       .full-height {
         height: 100vh;
       }
-      .flex-center {
+      /* .flex-center {
         align-items: center;
         display: flex;
         justify-content: center;
       }
       .position-ref {
         position: relative;
-      }
+      } */
       .top-right {
         position: absolute;
         right: 10px;
         top: 18px;
       }
-      .content {
+      /* .content {
         text-align: center;
-      }
-      .title {
-        font-size: 84px;
-      }
+      } */
       .links > a {
-        color: white;
+        color: black;
         padding: 0 25px;
         font-size: 13px;
         font-weight: 600;
@@ -58,11 +58,6 @@
       .main {
         margin-top: 50px;
       }
-      .post {
-        display: flex;
-        padding: 0 50px 0 50px;
-        margin: 0 50px 0 50px;
-      }
       .content.card {
         margin: 0 50px 0 50px;
         width: 250px;
@@ -71,7 +66,7 @@
       .header {
         height: 50px;
         width: 100%;
-        background-color: #636b6f;
+        /* background-color: #636b6f; */
       }
       .image {
         opacity: 1;
@@ -81,46 +76,45 @@
         transition: .5s ease;
         backface-visibility: hidden;
       }
-      .middle {
-        transition: .5s ease;
-        opacity: 0;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        text-align: center;
-      }
-      .content:hover .image {
-        opacity: 0.3;
-      }
-      .content:hover .middle {
-        opacity: 1;
-      }
-      .text {
-        background-color: #4CAF50;
-        color: white;
-        font-size: 16px;
-        padding: 16px 32px;
-      }
       .buy_now {
         border: 1px solid black;
         color: black;
+        text-align: center;
       }
       .buy_now:hover {
         background-color: black;
         color: white;
         font-weight: bold;
       }
-      .carousel {
-        margin-bottom: 50px;
-      }
       .content {
         display: flex;
       }
       .category {
-        width: 350px;
         list-style: none;
+        margin-top: 70px;
+        margin-right:  80px;
+      }
+      .link:hover {
+        background-color: black;
+      }
+      .category_style {
+        color: gray;
+        font-weight: bold;
+      }
+      .category_style:hover {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .product {
+        margin-top: 70px;
+        text-align: center;
+      }
+      .card:hover {
+        outline: gray solid 2px;
+      }
+      .pagination {
+        margin-left: 45%;
       }
     </style>
   </head>
@@ -130,8 +124,6 @@
       <div class="header">
         <img src="{{URL::asset('/images/cart1.png')}}" height="40px" width="40px" class="ml-5 mt-1">
         <div class="top-right links">
-          <a href="#">Home</a>
-          <a href="#">Contact</a>
           @auth
             <a href="{{ url('/home') }}">Home</a>
           @else
@@ -142,94 +134,62 @@
             @endif
           @endauth
         </div>
+        <hr>
       @endif
       </div>
     </div>
-    <div class="container-fuid">
-      <div id="bs4-multi-slide-carousel" class="carousel slide" data-ride="carousel" data-interval="3000">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="row">
-              <div class="col"><img src="{{URL::asset('/images/slider1.jpeg')}}" class="img-fluid" alt="3 slide"></div>
-              <div class="col"><img src="{{URL::asset('/images/slider2.jpeg')}}" class="img-fluid" alt="2 slide"></div>
-              <div class="col"><img src="{{URL::asset('/images/slider3.jpeg')}}" class="img-fluid" alt="2 slide"></div>
-              <div class="col"><img src="{{URL::asset('/images/slider4.jpeg')}}" class="img-fluid" alt="3 slide"></div>
-              <div class="col"><img src="{{URL::asset('/images/slider5.jpeg')}}" class="img-fluid" alt="1 slide"></div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row">
-              <div class="col"><img src="{{URL::asset('/images/slider2.jpeg')}}" class="img-fluid" alt="2 slide"></div>
-              <div class="col"><img src="{{URL::asset('/images/slider3.jpeg')}}" class="img-fluid" alt="3 slide"></div>
-              <div class="col"><img src="{{URL::asset('/images/slider4.jpeg')}}" class="img-fluid" alt="2 slide"></div>
-              <div class="col"><img src="{{URL::asset('/images/slider5.jpeg')}}" class="img-fluid" alt="3 slide"></div>
-              <div class="col"><img src="{{URL::asset('/images/slider1.jpeg')}}" class="img-fluid" alt="1 slide"></div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row">
-              <div class="col"><img src="{{URL::asset('/images/slider3.jpeg')}}" class="img-fluid" alt="2 slide"></div>
-              <div class="col"><img src="{{URL::asset('/images/slider4.jpeg')}}" class="img-fluid" alt="3 slide"></div>
-              <div class="col"><img src="{{URL::asset('/images/slider5.jpeg')}}" class="img-fluid" alt="2 slide"></div>
-              <div class="col"><img src="{{URL::asset('/images/slider1.jpeg')}}" class="img-fluid" alt="3 slide"></div>
-              <div class="col"><img src="{{URL::asset('/images/slider2.jpeg')}}" class="img-fluid" alt="1 slide"></div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row">
-              <div class="col"><img src="{{URL::asset('/images/slider4.jpeg')}}" class="img-fluid" alt="2 slide"></div>
-              <div class="col"><img src="{{URL::asset('/images/slider5.jpeg')}}" class="img-fluid" alt="3 slide"></div>
-              <div class="col"><img src="{{URL::asset('/images/slider1.jpeg')}}" class="img-fluid" alt="2 slide"></div>
-              <div class="col"><img src="{{URL::asset('/images/slider2.jpeg')}}" class="img-fluid" alt="3 slide"></div>
-              <div class="col"><img src="{{URL::asset('/images/slider3.jpeg')}}" class="img-fluid" alt="1 slide"></div>
-            </div>
-        </div>
-        <div class="carousel-item">
-          <div class="row">
-            <div class="col"><img src="{{URL::asset('/images/slider5.jpeg')}}" class="img-fluid" alt="2 slide"></div>
-            <div class="col"><img src="{{URL::asset('/images/slider1.jpeg')}}" class="img-fluid" alt="3 slide"></div>
-            <div class="col"><img src="{{URL::asset('/images/slider2.jpeg')}}" class="img-fluid" alt="2 slide"></div>
-            <div class="col"><img src="{{URL::asset('/images/slider3.jpeg')}}" class="img-fluid" alt="3 slide"></div>
-            <div class="col"><img src="{{URL::asset('/images/slider4.jpeg')}}" class="img-fluid" alt="1 slide"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  {{-- main content --}}
-  <div class="content">
-    <div class="category">
-      <div class="card">
-        <div class="card-header">
-          <h2 style="color: black;">Categories:</h2>
-        </div>
-        <div class="card-body">
+    {{-- main content --}}
+    <div class="content">
+      <div class="category">
+        <h2 style="color: black;">Categories</h2>
+        <hr>
           @foreach($categories as $category)
+          <div class="link">
             <li><a class="category_style" href={{action('ProductController@filterByCategory', $category->id) }}>{{ $category->name }}</a></li>
+            <hr>
+          </div>
           @endforeach
-        </div>
       </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        @foreach($products as $product)
-          <div class="col-md-4">
-            <div class="card mb-2">
-              <img src="{{ URL::asset($product->image) }}" height="250px" width="100%">
-              <div class="card-body">
-                <h4 class="card-title">{{ $product->name }}</h4>
-                <p class="card-text">{{ $product->price }} rs</p>
-                <a href="{{action('ProductController@viewMore', $product->id)}}" class="btn buy_now"><i class="fa fa-shopping-bag" aria-hidden="true"></i>View more</a>
+      {{-- <div class="container"> --}}
+        <div class="row product">
+          @foreach($products as $product)
+            <div class="col-md-3">
+              <div class="card mb-2 border-0">
+                <img src="{{ URL::asset($product->image) }}" height="250px" width="100%">
+                <div class="card-body">
+                  <h4>{{ $product->name }}</h4>
+                  <p>{{ $product->price }} rs</p>
+                  <a href="{{action('ProductController@viewMore', $product->id)}}" class="btn buy_now"><i class="fa fa-shopping-bag" aria-hidden="true"></i>View more</a>
+                </div>
               </div>
             </div>
-          </div>
-        @endforeach
-      </div>
+          @endforeach
+        </div>
     </div>
-  </div>
-  <script src="{{ asset('js/app.js') }}"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <span class="pagination">{{$products->links()}}</span>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    {{-- <script>
+      @if(Session::has('message'))
+        var type="{{Session::get(`alert-type`,`info`)}}"
+
+        switch(type) {
+          case 'info':
+            toastr.info("{{ Session::get('message') }}");
+            break;
+          case 'success':
+            toastr.success("{{ Session::get('message') }}");
+            break;
+          case 'warning':
+            toastr.warning("{{ Session::get('message') }}");
+            break;
+          case 'error':
+            toastr.error("{{ Session::get('message') }}");
+            break;
+        }
+      @endif
+    </script> --}}
   </body>
 </html>

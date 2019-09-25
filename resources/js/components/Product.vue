@@ -4,7 +4,7 @@
       <form @submit.prevent="createProduct()">
         <div class="form-group">
           <label for="inputName">Product Name</label>
-          <input type="text" class="form-control" id="inputName" v-model="product.name" placeholder="Product Name">
+          <input type="text" class="form-control" id="productName" name="productName" v-model="product.name" placeholder="Product Name">
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
@@ -110,12 +110,11 @@ export default {
       product.append('price', data.price);
       product.append('quantity', data.quantity);
 
-      axios.post('/product', product, {
+      let res = await axios.post('/product', product, {
         headers: {
             'Content-Type': 'multipart/form-data'
         }
       })
-      .then((res) => {
         this.product.name = '';
         this.product.image = '';
         this.product.categoryList = '';
@@ -124,8 +123,26 @@ export default {
         this.product.price = '';
         this.product.quantity = '';
         this.list.push(res.data.product)
-      })
-      .catch((err) => console.error(err));
+        console.log(res)
+        if(res.data.succsess) {
+          this.$toaster.success('Product is added successfully')
+          return true
+        }
+        this.$toaster.error('error');
+        return false
+
+
+
+//  this.$toaster.success('Your toaster success message.')
+// // or custom timeout
+// this.$toaster.success('Your toaster success message.', {timeout: 8000})
+
+// this.$toaster.info('Your toaster info message.')
+// this.$toaster.error('Your toaster error message.')
+// this.$toaster.warning('Your toaster warning message.')
+
+// or custom add method
+// this.$toaster.add('Your toaster theme message.', {theme: 'info', timeout: 10000})
     },
     async fetchCategory()
     {

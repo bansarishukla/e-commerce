@@ -57,7 +57,8 @@ class ProductController extends Controller
     $product->categories;
 
     return response()->json([
-      'product' => $product
+      'product' => $product,
+      'succsess' => 'add product'
     ]);
   }
 
@@ -143,7 +144,7 @@ class ProductController extends Controller
   }
   public function getProduct(Request $request)
   {
-    $products = Product::all();
+    $products = Product::paginate(8);
     $categories = Category::all();
     return view('welcome', compact('products','categories'));
   }
@@ -158,8 +159,8 @@ class ProductController extends Controller
     return view('users.showProductsByCategory', compact('category', 'products'));
   }
   public function user_list()
-   {
-     $users = Auth::user()->all();
-     return view('admin.user_list')->with(['user' => $users])->with(compact('users'));
-   }
+  {
+    $users = Auth::user()->all();
+    return view('admin.user_list')->with(['user' => $users])->with(compact('users'));
+  }
 }
