@@ -6,6 +6,11 @@
 import Vue from 'vue';
 import Toaster from 'v-toaster';
 import 'v-toaster/dist/v-toaster.css';
+import Vuelidate from 'vuelidate';
+
+
+Vue.use(Vuelidate);
+
 // import fontawesome from '@fortawesome/fontawesome';
 // import faSolid from '@fortawesome/fontawesome-free-solid';
 

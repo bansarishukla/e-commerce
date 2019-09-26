@@ -25,8 +25,8 @@ class CreateOrdersTable extends Migration
       $table->string('address');
       $table->string('city');
       $table->string('state');
-      $table->string('landmark');
-      $table->bigInteger('alternate_mobile');
+      $table->string('landmark')->nullable();
+      $table->bigInteger('alternate_mobile')->nullable();
       $table->string('address_type');
       $table->string('name_on_card');
       $table->string('card_number');

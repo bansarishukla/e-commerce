@@ -5,37 +5,130 @@
       <form @submit.prevent="orderProduct()">
         <div class="form-group row">
           <div class="col-sm-5">
-            <input type="text" class="form-control" id="inputName" v-model="order.name" placeholder="Name">
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="name"
+              v-model="order.name"
+              placeholder="Name"
+              :class="{ 'is-invalid': submitted && $v.order.name.$error }"
+            >
+            <div v-if="submitted && $v.order.name.$error" class="invalid-feedback">
+              <span v-if="!$v.order.name.required">Name is required</span>
+              <span v-if="!$v.order.name.alpha">Only characters are allowed!</span>
+            </div>
           </div>
           <div class="col-sm-5">
-            <input type="text" class="form-control" id="inputMobile" v-model="order.mobile" placeholder="10-digit mobile number">
+            <input
+              type="text"
+              class="form-control"
+              id="mobile"
+              name="mobile"
+              v-model="order.mobile"
+              placeholder="10-digit mobile number"
+              :class="{ 'is-invalid': submitted && $v.order.mobile.$error }"
+            >
+            <div v-if="submitted && $v.order.mobile.$error" class="invalid-feedback">
+              <span v-if="!$v.order.mobile.required">Phone is required</span>
+              <span v-if="!$v.order.mobile.minLength">Phone must be at least 10 digits</span>
+              <span v-if="!$v.order.mobile.numeric">Only ditits are allowed!</span>
+            </div>
           </div>
         </div>
         <div class="form-group row">
           <div class="col-sm-5">
-            <input type="text" class="form-control" id="inputPincode" v-model="order.pincode" placeholder="Pincode">
+            <input
+              type="text"
+              class="form-control"
+              id="pincode"
+              name="pincode"
+              v-model="order.pincode"
+              placeholder="Pincode"
+              :class="{ 'is-invalid': submitted && $v.order.pincode.$error }"
+            >
+            <div v-if="submitted && $v.order.pincode.$error" class="invalid-feedback">
+              <span v-if="!$v.order.pincode.required">Pincode is required</span>
+              <span v-if="!$v.order.pincode.numeric">Only ditits are allowed!</span>
+            </div>
           </div>
           <div class="col-sm-5">
-            <input type="text" class="form-control" id="inputLocality" v-model="order.locality" placeholder="Locality">
+            <input
+              type="text"
+              class="form-control"
+              id="locality"
+              name="locality"
+              v-model="order.locality"
+              placeholder="Locality"
+              :class="{ 'is-invalid': submitted && $v.order.locality.$error }"
+            >
+            <div v-if="submitted && !$v.order.locality.required" class="invalid-feedback">Locality is required</div>
           </div>
         </div>
         <div class="form-group">
-          <textarea rows="5" class="col-sm-10" v-model="order.address" placeholder="Address (Area and Street)"></textarea>
+          <textarea
+            rows="5"
+            class="col-sm-10"
+            v-model="order.address"
+            placeholder="Address (Area and Street)"
+            id="address"
+            name="address"
+            :class="{ 'is-invalid': submitted && $v.order.address.$error }"
+          />
+          <div v-if="submitted && !$v.order.address.required" class="invalid-feedback">Address is required</div>
         </div>
         <div class="form-group row">
           <div class="col-sm-5">
-            <input type="text" class="form-control" id="inputPincode" v-model="order.city" placeholder="City/District/Town">
+            <input
+              type="text"
+              class="form-control"
+              id="city"
+              name="city"
+              v-model="order.city"
+              placeholder="City/District/Town"
+              :class="{ 'is-invalid': submitted && $v.order.city.$error }"
+            >
+            <div v-if="submitted && !$v.order.city.required" class="invalid-feedback">City is required</div>
           </div>
           <div class="col-sm-5">
-            <input type="text" class="form-control" id="inputLocality" v-model="order.state" placeholder="State">
+            <input
+              type="text"
+              class="form-control"
+              id="state"
+              name="state"
+              v-model="order.state"
+              placeholder="State"
+              :class="{ 'is-invalid': submitted && $v.order.state.$error }"
+            >
+            <div v-if="submitted && !$v.order.state.required" class="invalid-feedback">State is required</div>
           </div>
         </div>
         <div class="form-group row">
           <div class="col-sm-5">
-            <input type="text" class="form-control" id="inputPincode" v-model="order.landmark" placeholder="Landmark (Optional)">
+            <input
+              type="text"
+              class="form-control"
+              id="landmark"
+              name="landmark"
+              v-model="order.landmark"
+              placeholder="Landmark"
+              :class="{ 'is-invalid': submitted && $v.order.landmark.$error }"
+            >
+            <div v-if="submitted && !$v.order.landmark.required" class="invalid-feedback">Landmark is required</div>
           </div>
           <div class="col-sm-5">
-            <input type="text" class="form-control" id="inputLocality" v-model="order.alternate_mobile" placeholder="Alternate Phone (Optional)">
+            <input
+              type="text"
+              class="form-control"
+              id="alternate_mobile"
+              name="alternate_mobile"
+              v-model="order.alternate_mobile"
+              placeholder="Alternate Phone"
+              :class="{ 'is-invalid': submitted && $v.order.alternate_mobile.$error }"
+            >
+            <span v-if="!$v.order.alternate_mobile.required">Phone is required</span>
+            <span v-if="!$v.order.alternate_mobile.numeric">Only ditits are allowed!</span>
+            <span v-if="!$v.order.alternate_mobile.minLength">Phone must be at least 10 digits</span>
           </div>
         </div>
         <label>Address Type</label>
@@ -58,10 +151,28 @@
         </div>
         <div class="form-group row">
           <div class="col-sm-5">
-            <input type="text" class="form-control" id="inputCardname" v-model="order.name_on_card" placeholder="Name on card">
+            <input
+              type="text"
+              class="form-control"
+              id="name_on_card"
+              name="name_on_card"
+              v-model="order.name_on_card"
+              placeholder="Name on card"
+              :class="{ 'is-invalid': submitted && $v.order.name_on_card.$error }"
+            >
+            <div v-if="submitted && !$v.order.name_on_card.required" class="invalid-feedback">Name is required</div>
           </div>
           <div class="col-sm-5">
-            <input type="text" class="form-control" id="inputCardnumber" v-model="order.card_number" placeholder="Credit / debit card number">
+            <input
+              type="text"
+              class="form-control"
+              id="card_number"
+              name="card_number"
+              v-model="order.card_number"
+              placeholder="Credit / debit card number"
+              :class="{ 'is-invalid': submitted && $v.order.card_number.$error }"
+            >
+            <div v-if="submitted && !$v.order.card_number.required" class="invalid-feedback">Card number is required</div>
           </div>
         </div>
         <button type="submit" class="btn btn-success">Complete Order</button>
@@ -70,6 +181,7 @@
   </div>
 </template>
 <script>
+import { required, numeric, alpha, minLength } from "vuelidate/lib/validators";
 export default {
   props: {
     postData: {
@@ -101,7 +213,51 @@ export default {
         product_id: '',
         price: '',
       },
+      submitted: false
     };
+  },
+  validations: {
+    order: {
+      name: {
+        required,
+        alpha
+      },
+      mobile: {
+        required,
+        minLength: minLength(10),
+        numeric
+      },
+      pincode: {
+        required,
+        numeric
+      },
+      locality: {
+        required
+      },
+      address: {
+        required
+      },
+      city: {
+        required
+      },
+      state: {
+        required
+      },
+      landmark: {
+        required
+      },
+      alternate_mobile: {
+        required,
+        minLength: minLength(10),
+        numeric
+      },
+      name_on_card: {
+        required
+      },
+      card_number: {
+        required
+      }
+    }
   },
   mounted() {
     console.log('mounted', this.product);
@@ -115,6 +271,11 @@ export default {
   methods: {
     async orderProduct()
     {
+      this.submitted = true;
+      this.$v.order.$touch()
+      if (this.$v.$invalid) {
+        return false
+      }
       let data = {
         name: this.order.name,
         mobile: this.order.mobile,
@@ -132,25 +293,30 @@ export default {
         price: this.order.price
       }
       console.log(data);
-      axios.post('/order', data)
-        .then((res) => {
-          this.order.name = '';
-          this.order.mobile ='';
-          this.order.pincode = '';
-          this.order.locality = '';
-          this.order.address = '';
-          this.order.city = '';
-          this.order.state = '';
-          this.order.landmark = '';
-          this.order.alternate_mobile = '';
-          this.order.address_type = '';
-          this.order.name_on_card = '';
-          this.order.card_number = '';
-          this.order.product_id = '';
-          this.order.price = '';
-          this.list.push(res.data.order)
-        })
-        .catch((err) => console.error(err));
+      let res = await axios.post('/order', data)
+        this.order.name = '';
+        this.order.mobile ='';
+        this.order.pincode = '';
+        this.order.locality = '';
+        this.order.address = '';
+        this.order.city = '';
+        this.order.state = '';
+        this.order.landmark = '';
+        this.order.alternate_mobile = '';
+        this.order.address_type = '';
+        this.order.name_on_card = '';
+        this.order.card_number = '';
+        this.order.product_id = '';
+        this.order.price = '';
+        this.list.push(res.data.order)
+        this.$v.order.$reset()
+
+        if(res.data.succsess) {
+          this.$toaster.success('Product is added successfully')
+          return true
+        }
+        this.$toaster.error('error');
+        return false
     },
   }
 };

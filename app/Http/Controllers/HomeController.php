@@ -27,10 +27,4 @@ class HomeController extends Controller
       return view('home');
     }
 
-    public function notification()
-    {
-      session()->set('success','Item created successfully.');
-
-      return view('notification-check');
-    }
 }

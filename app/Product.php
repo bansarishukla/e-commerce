@@ -18,7 +18,7 @@ class Product extends Model
   {
     return $this->belongsToMany('App\Category');
   }
-  public function orders()
+  public function order()
   {
     return $this->hasOne('App\Order');
   }

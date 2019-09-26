@@ -3,9 +3,10 @@
     <div>
       <form @submit.prevent="createCategories">
         <div class="form-group row">
-          <label for="inputCategory" class="col-sm-1 col-form-label title">Category</label>
+          <label for="name" class="col-sm-1 col-form-label title">Category</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" v-model="category.name">
+            <input type="text" class="form-control" v-model="category.name" id="name" name="name" :class="{ 'is-invalid': submitted && $v.category.name.$error }">
+            <div v-if="submitted && !$v.category.name.required" class="invalid-feedback">Category is required</div>
            </div>
         </div>
         <div>
@@ -27,6 +28,7 @@
   </div>
 </template>
 <script>
+import { required } from "vuelidate/lib/validators";
 export default {
   props: {
     postData: {
@@ -40,8 +42,15 @@ export default {
       category: {
         name: ''
       },
-      dialog:false
+      submitted: false
     };
+  },
+  validations: {
+    category: {
+      name: {
+        required
+      },
+    }
   },
   mounted() {
     console.log('mounted');
@@ -53,6 +62,11 @@ export default {
   methods: {
     async createCategories()
     {
+      this.submitted = true;
+      this.$v.category.$touch()
+      if (this.$v.$invalid) {
+        return false
+      }
       let data = {
         name: this.category.name
       }
@@ -60,8 +74,8 @@ export default {
       let res = await axios.post('/category',data)
         this.category.name = '';
         this.list.push(res.data.category)
-        console.log(res)
-        if(res.data.succsess) {
+        this.$v.category.$reset()
+        if(res.data.success) {
           this.$toaster.success('Product is added successfully')
           return true
         }

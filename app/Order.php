@@ -27,7 +27,7 @@ class Order extends Model
   {
     return $this->belongsTo('App\User');
   }
-  public function products()
+  public function product()
   {
     return $this->hasOne('App\Product');
   }

@@ -27,22 +27,11 @@
       .full-height {
         height: 100vh;
       }
-      /* .flex-center {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-      }
-      .position-ref {
-        position: relative;
-      } */
       .top-right {
         position: absolute;
         right: 10px;
         top: 18px;
       }
-      /* .content {
-        text-align: center;
-      } */
       .links > a {
         color: black;
         padding: 0 25px;
@@ -66,7 +55,6 @@
       .header {
         height: 50px;
         width: 100%;
-        /* background-color: #636b6f; */
       }
       .image {
         opacity: 1;
@@ -128,7 +116,6 @@
             <a href="{{ url('/home') }}">Home</a>
           @else
             <a href="{{ route('login') }}">Login</a>
-
             @if (Route::has('register'))
               <a href="{{ route('register') }}">Register</a>
             @endif
@@ -151,45 +138,25 @@
           @endforeach
       </div>
       {{-- <div class="container"> --}}
-        <div class="row product">
-          @foreach($products as $product)
-            <div class="col-md-3">
-              <div class="card mb-2 border-0">
-                <img src="{{ URL::asset($product->image) }}" height="250px" width="100%">
-                <div class="card-body">
-                  <h4>{{ $product->name }}</h4>
-                  <p>{{ $product->price }} rs</p>
-                  <a href="{{action('ProductController@viewMore', $product->id)}}" class="btn buy_now"><i class="fa fa-shopping-bag" aria-hidden="true"></i>View more</a>
-                </div>
+      <div class="row product">
+        @foreach($products as $product)
+          <div class="col-md-3">
+            <div class="card mb-2 border-0">
+              <img src="{{ URL::asset($product->image) }}" height="250px" width="100%">
+              <div class="card-body">
+                <h4>{{ $product->name }}</h4>
+                <p>{{ $product->price }} rs</p>
+                <a href="{{action('ProductController@viewMore', $product->id)}}" class="btn buy_now"><i class="fa fa-shopping-bag" aria-hidden="true"></i>View more</a>
               </div>
             </div>
-          @endforeach
-        </div>
+          </div>
+        @endforeach
+      </div>
     </div>
     <span class="pagination">{{$products->links()}}</span>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    {{-- <script>
-      @if(Session::has('message'))
-        var type="{{Session::get(`alert-type`,`info`)}}"
-
-        switch(type) {
-          case 'info':
-            toastr.info("{{ Session::get('message') }}");
-            break;
-          case 'success':
-            toastr.success("{{ Session::get('message') }}");
-            break;
-          case 'warning':
-            toastr.warning("{{ Session::get('message') }}");
-            break;
-          case 'error':
-            toastr.error("{{ Session::get('message') }}");
-            break;
-        }
-      @endif
-    </script> --}}
   </body>
 </html>
