@@ -12,9 +12,6 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
-
     <style>
       html, body {
         background-color: #fff;
@@ -23,6 +20,7 @@
         font-weight: 200;
         height: 100vh;
         margin: 0;
+        overflow: hidden;
       }
       .full-height {
         height: 100vh;
@@ -98,8 +96,11 @@
         margin-top: 70px;
         text-align: center;
       }
+      .card {
+        margin-left: 50px;
+      }
       .card:hover {
-        outline: gray solid 2px;
+        outline: gray solid 1px;
       }
       .pagination {
         margin-left: 45%;
@@ -141,8 +142,8 @@
       <div class="row product">
         @foreach($products as $product)
           <div class="col-md-3">
-            <div class="card mb-2 border-0">
-              <img src="{{ URL::asset($product->image) }}" height="250px" width="100%">
+            <div class="card mb-2 w-50 border-0">
+              <img src="{{ URL::asset($product->image) }}" height="260px" width="100%">
               <div class="card-body">
                 <h4>{{ $product->name }}</h4>
                 <p>{{ $product->price }} rs</p>

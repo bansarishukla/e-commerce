@@ -9,13 +9,11 @@
         @if(count($products) > 0)
           @foreach($products as $product)
             <div class="col-md-3">
-              <div class="card mb-2">
+              <div class="card mb-4 border-0">
                 <img src="{{ URL::asset($product->image) }}" height="250px" width="100%">
-              </div>
-              <div class="card-body">
                 <h4>{{ $product->name }}</h4>
                 <p>{{ $product->price }} rs</p>
-                <a class="btn buy_now" href="{{action('ProductController@viewMore', $product->id)}}"><i class="fa fa-shopping-bag" aria-hidden="true"></i>View more</a>
+                <a href="{{action('ProductController@viewMore', $product->id)}}" class="btn buy_now"><i class="fa fa-shopping-bag" aria-hidden="true"></i>View more</a>
               </div>
             </div>
           @endforeach
@@ -30,7 +28,7 @@
 @endsection
 <style>
   .card {
-    height: 300px;
+    height: 400px;
     width: 300px;
   }
   .product {
@@ -39,9 +37,9 @@
   .buy_now {
     border: 1px solid black;
     color: black;
+    text-align: center;
   }
   .buy_now:hover {
-    /* background-color: black; */
     color: white;
     font-weight: bold;
   }
