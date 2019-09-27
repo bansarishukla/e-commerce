@@ -142,7 +142,7 @@
       <div class="row product">
         @foreach($products as $product)
           <div class="col-md-3">
-            <div class="card mb-2 w-50 border-0">
+            <div class="card mb-2 w-100 border-0">
               <img src="{{ URL::asset($product->image) }}" height="260px" width="100%">
               <div class="card-body">
                 <h4>{{ $product->name }}</h4>
